@@ -1,4 +1,5 @@
 import java.io.File
+import kotlin.math.ceil
 
 fun main(args: Array<String>) {
     //Use URL (maybe it will come in handy)
@@ -92,32 +93,112 @@ fun main(args: Array<String>) {
     println("Day 3 Part 1 $sol")
     */
 
-    /*// Day 4 */
+    /*// Day 4
     val data = readFileAsLinesUsingUseLines("src/passports")
     var passports :MutableList<Passport> = mutableListOf()
-    var curPassport: Passport? = null
-    data.forEach {
-        if(it == "" && curPassport != null){
-            passports.add(curPassport)
+    var passports2 :MutableList<Passport> = mutableListOf()
+    var curPassport: Passport? = Passport()
+    data.forEach { line ->
+        if(line == ""){
+            // Part 1
+            if(curPassport!!.isValid()) {
+                passports.add(curPassport!!)
+            }
+            // Part 2
+            if(curPassport!!.isValid2()){
+                passports2.add(curPassport!!)
+            }
+            curPassport = Passport()
         }
-        it.split(" ").forEach {  }
+        line.split(" ").forEach {
+            val info = it.split(":")
+            when(info[0].toLowerCase()){
+                "byr" -> curPassport?.byr = info[1]
+                "iyr" -> curPassport?.iyr = info[1]
+                "eyr" -> curPassport?.eyr = info[1]
+                "hgt" -> curPassport?.hgt = info[1]
+                "hcl" -> curPassport?.hcl = info[1]
+                "ecl" -> curPassport?.ecl = info[1]
+                "pid" -> curPassport?.pid = info[1]
+                "cid" -> curPassport?.cid = info[1]
+
+            }
+        }
     }
+    println("Day 4 Part 1 ${passports.size}")
+    println("Day 4 Part 2 ${passports2.size}")
+    */
+
+    /*// Day 5
+    var seats = "0".repeat(128*8).toCharArray()
+    val data = readFileAsLinesUsingUseLines("src/seats")
+    var max = 0
+    data.forEach { line ->
+        var yF = 0
+        var yB = 128
+        var xL = 0
+        var xR = 8
+        line.forEach {
+            when(it){
+                'F'-> yB -= ceil((((yB - yF) / 2).toDouble())).toInt()
+                'B'-> yF += ceil((((yB - yF) / 2).toDouble())).toInt()
+                'L'-> xR -= ceil((((xR - xL) / 2).toDouble())).toInt()
+                'R'-> xL += ceil((((xR - xL) / 2).toDouble())).toInt()
+            }
+        }
+
+        // Part 1
+        val sol = yF*8+xL
+        if(sol > max){
+            max = sol
+        }
+
+        // Part 2
+        seats[yF*8+xL] = '1'
+    }
+
+    val index = seats.joinToString(separator = "").indexOf("101")+1
+    val mySeat = index+(index%8)
+
+    println("Day 5 Part 1 $max")
+    println("Day 6 Part 2 $mySeat")
+    */
+
+    /*// Day 6 */
 }
 
 class Passport{
-    val byr : String? = null
-    val iyr : String? = null
-    val eyr : String? = null
-    val hgt : String? = null
-    val hcl : String? = null
-    val ecl : String? = null
-    val pid : String? = null
-    val cid : String? = null
+    var byr : String? = null
+    var iyr : String? = null
+    var eyr : String? = null
+    var hgt : String? = null
+    var hcl : String? = null
+    var ecl : String? = null
+    var pid : String? = null
+    var cid : String? = null
 
-    fun isValid(): Boolean
-    {
+    fun isValid(): Boolean {
         return listOfNotNull(byr, iyr, eyr, hgt, hcl, ecl, pid).size == 7
     }
+
+    fun isValid2(): Boolean {
+        val v1 = byr?.toIntOrNull() in 1920..2002
+        val v2 = iyr?.toIntOrNull() in 2010..2020
+        val v3 = eyr?.toIntOrNull() in 2020..2030
+        val v4 = hgt?.matches("\\d+\\s*(?:cm|in)".toRegex())
+        val v5 = hcl?.matches("^#([a-fA-F0-9]{6})\$".toRegex())
+        val v6 = ecl?.matches("\\b(?:amb|blu|brn|gry|grn|hzl|oth)\\b".toRegex())
+        val v7 = pid?.length == 9 && pid?.matches("^\\d{9}\$".toRegex()) == true
+        var v8:Boolean = false
+        if(hgt?.takeLast(2) == "cm")
+            v8 = hgt?.dropLast(2)?.toIntOrNull() in 150..193
+        else if(hgt?.takeLast(2) == "in")
+            v8 =hgt?.dropLast(2)?.toIntOrNull() in 59..76
+
+        return isValid()&&v1&&v2&&v3&& v4 == true && v5 == true && v6 == true && v7 && v8
+    }
+
+    override fun toString() = isValid2().toString()+": byr=$byr iyr=$iyr eyr=$eyr hgt=$hgt hcl=$hcl ecl=$ecl pid=$pid cid=$cid"
 }
 
 fun readFileAsLinesUsingUseLines(fileName: String): List<String>
