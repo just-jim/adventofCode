@@ -1,10 +1,7 @@
 fun main() {
     val preambleSize = 25
-    val data = readFileAsLinesUsingUseLines("src/day9")
+    val data = readFileAsLong("src/day9")
     val preamble = mutableListOf<Long>()
-
-    val list = mutableListOf<Long>()
-    data.forEach {list.add(it.toLong())}
 
     var solution1 = 0L
 
@@ -20,7 +17,7 @@ fun main() {
     }
 
     run lit@{
-        list.forEach {
+        data.forEach {
             if (preamble.size < preambleSize)
                 preamble.add(it)
             else {
@@ -40,7 +37,7 @@ fun main() {
     var sum = 0L
     val miniList = mutableListOf<Long>()
     run lit@{
-        list.forEach {
+        data.forEach {
             if (sum > solution1) {
                 while(sum > solution1) {
                     sum -=  miniList.removeFirst()

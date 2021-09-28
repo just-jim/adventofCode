@@ -1,6 +1,6 @@
 fun main() {
     // Create the map
-    val mapFile = readFileAsLinesUsingUseLines("src/map")
+    val mapFile = readFileAsStrings("src/map")
     val map = array2dOfInt(mapFile[0].length,mapFile.size)
     mapFile.forEachIndexed { i, line->
         line.forEachIndexed { i2, tile ->

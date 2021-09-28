@@ -1,5 +1,5 @@
 fun main() {
-    val data = readFileAsLinesUsingUseLines("src/passports")
+    val data = readFileAsStrings("src/passports")
     val passports :MutableList<Passport> = mutableListOf()
     val passports2 :MutableList<Passport> = mutableListOf()
     var curPassport: Passport? = Passport()

@@ -1,5 +1,5 @@
 fun main() {
-    val data = readFileAsLinesUsingUseLines("src/customs")
+    val data = readFileAsStrings("src/customs")
     var group: MutableSet<Char> = mutableSetOf()
     var group2: MutableMap<Char,Int> = mutableMapOf()
     var count = 0

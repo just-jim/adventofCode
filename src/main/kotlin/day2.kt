@@ -1,5 +1,5 @@
 fun main() {
-    val passwords = readFileAsLinesUsingUseLines("src/passwords")
+    val passwords = readFileAsStrings("src/passwords")
     var valid1 = 0
     var valid2 = 0
     passwords.forEach { line ->

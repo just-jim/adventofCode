@@ -1,7 +1,7 @@
 fun main() {
 
     // Part 1 + 2
-    val expenses = readFileAsLinesUsingUseLines("src/expenses")
+    val expenses = readFileAsStrings("src/expenses")
     expenses.forEach { a ->
         expenses.forEach { b ->
             expenses.forEach { c ->

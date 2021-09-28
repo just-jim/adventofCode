@@ -1,6 +1,6 @@
 fun main() {
 
-    val data = readFileAsLinesUsingUseLines("src/day7")
+    val data = readFileAsStrings("src/day7")
     val bags = mutableMapOf<String,Bag>()
 
     fun registerBag(bagName:String,parent:Bag? = null)
