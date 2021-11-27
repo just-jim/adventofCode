@@ -1,5 +1,5 @@
 fun main() {
-    val passwords = readFileAsStrings("src/passwords")
+    val passwords = readFileAsStrings("day2")
     var valid1 = 0
     var valid2 = 0
     passwords.forEach { line ->
@@ -18,6 +18,6 @@ fun main() {
             valid2++
     }
 
-    println("Day 2 Part 1: $valid1")
-    println("Day 2 Part 2: $valid2")
+    println("Part 1: $valid1")
+    println("Part 2: $valid2")
 }

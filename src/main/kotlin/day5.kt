@@ -2,7 +2,7 @@ import kotlin.math.ceil
 
 fun main() {
     var seats = "0".repeat(128*8).toCharArray()
-    val data = readFileAsStrings("src/seats")
+    val data = readFileAsStrings("day5")
     var max = 0
     data.forEach { line ->
         var yF = 0
@@ -31,6 +31,6 @@ fun main() {
     val index = seats.joinToString(separator = "").indexOf("101")+1
     val mySeat = index+(index%8)
 
-    println("Day 5 Part 1: $max")
-    println("Day 5 Part 2: $mySeat")
+    println("Part 1: $max")
+    println("Part 2: $mySeat")
 }

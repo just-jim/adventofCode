@@ -1,6 +1,6 @@
 fun main() {
     // Create the map
-    val mapFile = readFileAsStrings("src/map")
+    val mapFile = readFileAsStrings("day3")
     val map = array2dOfInt(mapFile[0].length,mapFile.size)
     mapFile.forEachIndexed { i, line->
         line.forEachIndexed { i2, tile ->
@@ -20,7 +20,7 @@ fun main() {
                 trees++
         }
     }
-    println("Day 3 Part 1: $trees")
+    println("Part 1: $trees")
 
     // Part 2
     val stepList : Array<Pair<Int,Int>> = Array(5) {Pair(1,1)}
@@ -45,5 +45,5 @@ fun main() {
         sol *= trees
     }
 
-    println("Day 3 Part 2: $sol")
+    println("Part 2: $sol")
 }

@@ -1,5 +1,5 @@
 fun main() {
-    val data = readFileAsStrings("src/passports")
+    val data = readFileAsStrings("day4")
     val passports :MutableList<Passport> = mutableListOf()
     val passports2 :MutableList<Passport> = mutableListOf()
     var curPassport: Passport? = Passport()
@@ -32,8 +32,8 @@ fun main() {
             }
         }
     }
-    println("Day 4 Part 1: ${passports.size}")
-    println("Day 4 Part 2: ${passports2.size}")
+    println("Part 1: ${passports.size}")
+    println("Part 2: ${passports2.size}")
 }
 
 class Passport{
