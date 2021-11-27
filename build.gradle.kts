@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.20"
+    kotlin("jvm") version "1.6.0"
     application
 }
 
@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.microutils:kotlin-logging-jvm:2.0.2")
-    implementation(kotlin("stdlib-jdk8"))
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0")
 }
 
 tasks.withType<KotlinCompile>() {
