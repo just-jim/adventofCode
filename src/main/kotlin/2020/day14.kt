@@ -1,5 +1,5 @@
 fun main() {
-    val file = readFileAsStrings("day14")
+    val file = readFileAsStrings("2020/day14")
 
     var mask = ""
     val dic : MutableMap<Int,Long> = mutableMapOf()

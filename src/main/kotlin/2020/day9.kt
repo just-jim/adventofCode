@@ -1,6 +1,6 @@
 fun main() {
     val preambleSize = 25
-    val data = readFileAsLong("day9")
+    val data = readFileAsLong("2020/day9")
     val preamble = mutableListOf<Long>()
 
     var solution1 = 0L

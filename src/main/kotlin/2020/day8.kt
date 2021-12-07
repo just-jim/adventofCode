@@ -1,5 +1,5 @@
 fun main() {
-    val data = readFileAsStrings("day8")
+    val data = readFileAsStrings("2020/day8")
     val code = mutableListOf<String>()
     val visited = mutableListOf<Int>()
 

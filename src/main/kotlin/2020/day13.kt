@@ -1,5 +1,5 @@
 fun main() {
-    val file = readFileAsStrings("day13")
+    val file = readFileAsStrings("2020/day13")
     val time = file[0].toInt()
     val times = mutableMapOf<Int,Int>()
     val map = mutableMapOf<Int,Int>()

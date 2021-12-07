@@ -2,7 +2,7 @@ import kotlin.math.ceil
 
 fun main() {
     var seats = "0".repeat(128*8).toCharArray()
-    val data = readFileAsStrings("day5")
+    val data = readFileAsStrings("2020/day5")
     var max = 0
     data.forEach { line ->
         var yF = 0

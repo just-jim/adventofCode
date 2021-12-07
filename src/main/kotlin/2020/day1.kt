@@ -1,5 +1,5 @@
 fun main() {
-    val expenses = readFileAsStrings("day1")
+    val expenses = readFileAsStrings("2020/day1")
     expenses.forEach { a ->
         expenses.forEach { b ->
             expenses.forEach { c ->

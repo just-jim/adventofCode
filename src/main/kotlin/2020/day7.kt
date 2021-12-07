@@ -1,6 +1,6 @@
 fun main() {
 
-    val data = readFileAsStrings("day7")
+    val data = readFileAsStrings("2020/day7")
     val bags = mutableMapOf<String,Bag>()
 
     fun registerBag(bagName:String,parent:Bag? = null)

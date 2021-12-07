@@ -1,5 +1,5 @@
 fun main() {
-    val data = readFileAsStrings("day6")
+    val data = readFileAsStrings("2020/day6")
     var group: MutableSet<Char> = mutableSetOf()
     var group2: MutableMap<Char,Int> = mutableMapOf()
     var count = 0

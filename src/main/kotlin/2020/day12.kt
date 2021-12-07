@@ -82,7 +82,7 @@ fun main() {
 
     val boat = Boat()
 
-    val cords = readFileAsStrings("src/day12")
+    val cords = readFileAsStrings("2020/day12")
     cords.forEach { line ->
         val command = line.take(1)
         val value = line.substring(1).toInt()

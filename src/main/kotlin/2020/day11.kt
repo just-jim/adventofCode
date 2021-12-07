@@ -160,7 +160,7 @@ fun main() {
     }
 
     // Create the map
-    val mapFile = readFileAsStrings("src/day11")
+    val mapFile = readFileAsStrings("2020/day11")
     val chairs = Chairs(array2dOfChar(mapFile[0].length,mapFile.size),Pair(mapFile.size,mapFile[0].length))
     chairs.populateChairs(mapFile)
 

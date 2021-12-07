@@ -1,6 +1,6 @@
 fun main() {
     // Create the map
-    val mapFile = readFileAsStrings("day3")
+    val mapFile = readFileAsStrings("2020/day3")
     val map = array2dOfInt(mapFile[0].length,mapFile.size)
     mapFile.forEachIndexed { i, line->
         line.forEachIndexed { i2, tile ->
