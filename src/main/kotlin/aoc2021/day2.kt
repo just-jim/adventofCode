@@ -1,4 +1,8 @@
+package aoc2021
+
+import readFileAsStrings
 import kotlin.math.absoluteValue
+
 fun main() {
     class Submarine{
         var x: Int = 0
@@ -33,7 +37,7 @@ fun main() {
     val submarine2 = Submarine()
 
     val test = false
-    val cords = readFileAsStrings(if(test) "jim" else "2021/day2")
+    val cords = readFileAsStrings(if(test) "jim" else "aoc2021/day2")
     cords.forEach { line ->
         val command = line.split(" ")[0]
         val value = line.split(" ")[1].toInt()

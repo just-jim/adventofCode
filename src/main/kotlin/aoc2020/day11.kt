@@ -1,3 +1,8 @@
+package aoc2020
+
+import array2dOfChar
+import readFileAsStrings
+
 fun main() {
     data class Chair(
         var status: Char,
@@ -160,7 +165,7 @@ fun main() {
     }
 
     // Create the map
-    val mapFile = readFileAsStrings("2020/day11")
+    val mapFile = readFileAsStrings("aoc2020/day11")
     val chairs = Chairs(array2dOfChar(mapFile[0].length,mapFile.size),Pair(mapFile.size,mapFile[0].length))
     chairs.populateChairs(mapFile)
 

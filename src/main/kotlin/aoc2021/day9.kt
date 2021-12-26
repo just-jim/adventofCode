@@ -1,6 +1,11 @@
+package aoc2021
+
+import array2dOfInt
+import readFileAsStrings
+
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "2021/day9")
+    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day9")
 
     val lx = file[0].length
     val ly = file.size

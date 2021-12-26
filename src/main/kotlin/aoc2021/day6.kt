@@ -1,8 +1,11 @@
+package aoc2021
+
+import readFileAsStrings
 import kotlin.math.abs
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "2021/day6")
+    val file = readFileAsStrings(if (test) "jim" else "aoc2021/day6")
 
     val days = LongArray(7)
     val nextWeekFishes = LongArray(7)

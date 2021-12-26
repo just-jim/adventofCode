@@ -1,6 +1,10 @@
+package aoc2021
+
+import readFileAsStrings
+
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "2021/day10")
+    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day10")
 
     val start = listOf('<','[','{','(')
     val opposite : Map<Char,Char> = mapOf(Pair('>','<'),Pair(']','['),Pair('}','{'),Pair(')','('),Pair('<','>'),Pair('[',']'),Pair('{','}'),Pair('(',')'))

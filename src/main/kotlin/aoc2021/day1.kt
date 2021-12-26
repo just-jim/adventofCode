@@ -1,6 +1,10 @@
+package aoc2021
+
+import readFileAsInt
+
 fun main() {
     val test = false
-    val file = readFileAsInt(if(test) "jim" else "2021/day1")
+    val file = readFileAsInt(if(test) "jim" else "aoc2021/day1")
     var count = 0
     file.forEachIndexed{i,v ->
         if(i==0) return@forEachIndexed

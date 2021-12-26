@@ -1,5 +1,9 @@
+package aoc2020
+
+import readFileAsStrings
+
 fun main() {
-    val data = readFileAsStrings("2020/day4")
+    val data = readFileAsStrings("aoc2020/day4")
     val passports :MutableList<Passport> = mutableListOf()
     val passports2 :MutableList<Passport> = mutableListOf()
     var curPassport: Passport? = Passport()

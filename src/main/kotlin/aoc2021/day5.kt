@@ -1,9 +1,13 @@
+package aoc2021
+
+import array2dOfInt
+import readFileAsStrings
 import java.lang.Integer.min
 import java.lang.Integer.max
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "2021/day5")
+    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day5")
     val map = array2dOfInt(1000,1000)
     val map2 = array2dOfInt(1000,1000)
     file.forEach { line->

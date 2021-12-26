@@ -1,6 +1,11 @@
+package aoc2020
+
+import array2dOfInt
+import readFileAsStrings
+
 fun main() {
     // Create the map
-    val mapFile = readFileAsStrings("2020/day3")
+    val mapFile = readFileAsStrings("aoc2020/day3")
     val map = array2dOfInt(mapFile[0].length,mapFile.size)
     mapFile.forEachIndexed { i, line->
         line.forEachIndexed { i2, tile ->
@@ -41,7 +46,6 @@ fun main() {
                     trees++
             }
         }
-        println(trees)
         sol *= trees
     }
 

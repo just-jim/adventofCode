@@ -1,5 +1,9 @@
+package aoc2020
+
+import readFileAsStrings
+
 fun main() {
-    val data = readFileAsStrings("2020/day8")
+    val data = readFileAsStrings("aoc2020/day8")
     val code = mutableListOf<String>()
     val visited = mutableListOf<Int>()
 
