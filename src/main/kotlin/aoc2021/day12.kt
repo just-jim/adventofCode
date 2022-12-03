@@ -4,7 +4,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day12")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2021/day12")
 
     class Node(){
         lateinit var name:String

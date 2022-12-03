@@ -4,7 +4,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day4")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2021/day4")
 
     val nums = file[0].split(',')
 

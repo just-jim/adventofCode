@@ -5,7 +5,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day13")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2021/day13")
 
     val cords = mutableListOf<Pair<Int,Int>>()
     val folds = mutableListOf<Pair<Char,Int>>()

@@ -4,7 +4,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day8")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2021/day8")
 
     var count = 0
     var count2 = 0

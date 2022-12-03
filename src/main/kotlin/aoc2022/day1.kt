@@ -4,7 +4,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2022/day1")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2022/day1")
 
     val calories = file
         .flatMapIndexed { index, x ->

@@ -4,7 +4,7 @@ import readFileAsStrings
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if(test) "jim" else "aoc2021/day3")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2021/day3")
     val num = IntArray(file[0].length){0}
     val num2 = IntArray(file[0].length){0}
     file.forEach{line ->

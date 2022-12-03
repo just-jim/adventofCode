@@ -18,7 +18,7 @@ enum class BattleOutcome(val score: Int){
 
 fun main() {
     val test = true
-    val file = readFileAsStrings(if(test) "jim" else "aoc2022/day2")
+    val file = readFileAsStrings(if(test) "sample" else "aoc2022/day2")
 
     fun String.toRPS(): RPS = when(this){
         "A","X" -> Rock
