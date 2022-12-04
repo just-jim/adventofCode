@@ -6,10 +6,11 @@ fun main() {
     val test = true
     val file = readFileAsStrings(if (test) "sample" else "aoc2022/dayX")
 
+    var sum = 0
     file.forEach { line ->
     }
 
-    val sol1 = 0
+    val sol1 =sum
     println("Part 1: $sol1")
 
     val sol2 = 0
