@@ -34,7 +34,7 @@ class StackTest {
         Assert.assertTrue(stack.isEmpty())
     }
 
-    @Test(expected=NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun exceptionTest() {
         val stack = Stack<Int>()
         stack.peek()

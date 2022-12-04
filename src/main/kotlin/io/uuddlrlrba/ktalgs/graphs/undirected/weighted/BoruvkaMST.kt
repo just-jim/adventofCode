@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 import io.uuddlrlrba.ktalgs.datastructures.DisjointSet
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
-class BoruvkaMST(G: UWGraph): MST {
+class BoruvkaMST(G: UWGraph) : MST {
     var weight: Double = 0.0
     var edges: Queue<UWGraph.Edge> = Queue()
 
@@ -44,7 +44,7 @@ class BoruvkaMST(G: UWGraph): MST {
                 val w = e.w
                 val i = uf.find(v)
                 val j = uf.find(w)
-                if (i == j) continue   // same tree
+                if (i == j) continue // same tree
                 if (closest[i] == null || e < closest[i]!!) closest[i] = e
                 if (closest[j] == null || e < closest[j]!!) closest[j] = e
             }

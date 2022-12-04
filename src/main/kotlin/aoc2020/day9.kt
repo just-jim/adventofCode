@@ -22,9 +22,9 @@ fun main() {
 
     run lit@{
         data.forEach {
-            if (preamble.size < preambleSize)
+            if (preamble.size < preambleSize) {
                 preamble.add(it)
-            else {
+            } else {
                 val allSums = allPossibleSums(preamble)
                 if (!allSums.contains(it)) {
                     solution1 = it
@@ -43,8 +43,8 @@ fun main() {
     run lit@{
         data.forEach {
             if (sum > solution1) {
-                while(sum > solution1) {
-                    sum -=  miniList.removeFirst()
+                while (sum > solution1) {
+                    sum -= miniList.removeFirst()
                 }
             }
             if (sum == solution1) {

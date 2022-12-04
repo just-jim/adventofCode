@@ -25,13 +25,14 @@ package io.uuddlrlrba.ktalgs.datastructures.tree
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 import java.util.NoSuchElementException
 
-class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
+class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
     data class Node<K, V>(
-            override val key: K,
-            override var value: V,
-            var left: Node<K, V>? = null,
-            var right: Node<K, V>? = null,
-            var size: Int = 1): Map.Entry<K, V>
+        override val key: K,
+        override var value: V,
+        var left: Node<K, V>? = null,
+        var right: Node<K, V>? = null,
+        var size: Int = 1
+    ) : Map.Entry<K, V>
 
     private var root: Node<K, V>? = null
 

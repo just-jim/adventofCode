@@ -73,7 +73,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
     public override fun isEmpty(): Boolean {
         return size == 0
     }
-    
+
     override fun contains(element: T): Boolean {
         for (obj in this) {
             if (obj == element) return true

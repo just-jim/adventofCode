@@ -7,25 +7,25 @@ fun main() {
     val code = mutableListOf<String>()
     val visited = mutableListOf<Int>()
 
-    data.forEach {code.add(it)}
+    data.forEach { code.add(it) }
 
     val codeLength = code.size
     var i: Int = 0
     var x: Int = 0
 
-    while (!visited.contains(i)){
+    while (!visited.contains(i)) {
         visited.add(i)
         val parts = code[i].split(" ")
         val instruction = parts[0]
         val value = parts[1].toInt()
 
-        when(instruction){
+        when (instruction) {
             "nop" -> i++
             "acc" -> {
                 x += value
                 i++
             }
-            "jmp" -> i+= value
+            "jmp" -> i += value
         }
     }
 
@@ -35,10 +35,11 @@ fun main() {
         code.forEachIndexed { index, it ->
             if (it.contains("nop") || it.contains("jmp")) {
                 val code2 = code.toMutableList()
-                if (it.contains("nop"))
+                if (it.contains("nop")) {
                     code2[index] = code2[index].replace("nop", "jmp")
-                else
+                } else {
                     code2[index] = code2[index].replace("jmp", "nop")
+                }
 
                 visited.clear()
                 i = 0
@@ -65,6 +66,7 @@ fun main() {
         }
     }
 
-    if (i >= codeLength)
+    if (i >= codeLength) {
         println("Part2: $x")
+    }
 }

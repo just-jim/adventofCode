@@ -34,7 +34,7 @@ class DequeueTest {
         Assert.assertTrue(dequeue.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun exceptionTest() {
         val dequeue = Dequeue<Int>()
         dequeue.peekFirst()

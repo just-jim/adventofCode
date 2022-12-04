@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.sorts
 
-class BubbleSortTest: AbstractSortTest<BubbleSort>(BubbleSort())
+class BubbleSortTest : AbstractSortTest<BubbleSort>(BubbleSort())

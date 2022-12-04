@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 import io.uuddlrlrba.ktalgs.datastructures.IndexedPriorityQueue
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
-class PrimMST(G: UWGraph): MST {
+class PrimMST(G: UWGraph) : MST {
     var weight: Double = 0.0
     var edges: Queue<UWGraph.Edge> = Queue()
 

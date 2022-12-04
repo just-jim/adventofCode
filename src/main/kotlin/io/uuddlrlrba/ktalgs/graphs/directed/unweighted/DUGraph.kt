@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.graphs.directed.unweighted
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 import io.uuddlrlrba.ktalgs.graphs.Graph
 
-class DUGraph(public override val V: Int): Graph {
+class DUGraph(public override val V: Int) : Graph {
     override var E: Int = 0
     private val adj: Array<Queue<Int>> = Array(V) { Queue<Int>() }
     private val indegree: IntArray = IntArray(V)

@@ -22,7 +22,7 @@
 
 package io.uuddlrlrba.ktalgs.search
 
-class LinearSearch<T>: AbstractSearchStrategy<T>() {
+class LinearSearch<T> : AbstractSearchStrategy<T>() {
     override fun perform(arr: Array<T>, element: T): Int {
         for ((i, a) in arr.withIndex()) {
             if (a == element) {

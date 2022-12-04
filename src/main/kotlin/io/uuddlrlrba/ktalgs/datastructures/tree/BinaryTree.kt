@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.datastructures.tree
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
 class BinaryTree(var value: Int, var left: BinaryTree?, var right: BinaryTree?) {
-    constructor(value: Int): this(value, null, null)
+    constructor(value: Int) : this(value, null, null)
 
     fun size(): Int {
         var size = 1

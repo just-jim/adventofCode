@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.geometry.convexhull
 
-class GrahamScanTest: ConvexHullTest(GrahamScan())
+class GrahamScanTest : ConvexHullTest(GrahamScan())

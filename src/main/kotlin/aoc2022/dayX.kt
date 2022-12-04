@@ -4,9 +4,9 @@ import readFileAsStrings
 
 fun main() {
     val test = true
-    val file = readFileAsStrings(if(test) "sample" else "aoc2022/dayX")
+    val file = readFileAsStrings(if (test) "sample" else "aoc2022/dayX")
 
-    file.forEach { line->
+    file.forEach { line ->
     }
 
     val sol1 = 0

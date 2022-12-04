@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.sorts
 
-class MergeSortTest: AbstractSortTest<MergeSort>(MergeSort())
+class MergeSortTest : AbstractSortTest<MergeSort>(MergeSort())

@@ -34,7 +34,7 @@ class IndexedPriorityQueueTest {
         Assert.assertTrue(pq.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun exceptionTest() {
         val pq = IndexedPriorityQueue<Int>(3)
         pq.peek()

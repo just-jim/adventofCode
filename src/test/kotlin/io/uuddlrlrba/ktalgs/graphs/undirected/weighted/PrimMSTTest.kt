@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 
-class PrimMSTTest: MSTTest({ graph -> PrimMST(graph) })
+class PrimMSTTest : MSTTest({ graph -> PrimMST(graph) })

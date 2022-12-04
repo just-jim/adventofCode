@@ -35,7 +35,7 @@ package io.uuddlrlrba.ktalgs.sorts
  */
 @ComparisonSort
 @UnstableSort
-class QuickSort: AbstractSortStrategy() {
+class QuickSort : AbstractSortStrategy() {
     override fun <T : Comparable<T>> perform(arr: Array<T>) {
         sort(arr, 0, arr.size - 1)
     }

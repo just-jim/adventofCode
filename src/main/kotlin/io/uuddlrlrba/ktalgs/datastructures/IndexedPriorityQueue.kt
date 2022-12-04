@@ -55,8 +55,8 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     /**
      * Associates key with index {@code i}.
      *
-     * @param  i an index
-     * @param  key the key to associate with index {@code i}
+     * @param i an index
+     * @param key the key to associate with index {@code i}
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if there already is an item associated with index {@code i}
      */
@@ -73,8 +73,8 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     /**
      * Decrease the key associated with index `i` to the specified value.
      *
-     * @param  i the index of the key to decrease
-     * @param  key decrease the key associated with index `i` to this key
+     * @param i the index of the key to decrease
+     * @param key decrease the key associated with index `i` to this key
      * @throws IndexOutOfBoundsException unless `0 <= i < maxN`
      * @throws IllegalArgumentException if `key >=` key associated with index `i`
      * @throws NoSuchElementException no key is associated with index `i`
@@ -82,9 +82,12 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     public fun decreaseKey(i: Int, key: T) {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         if (!contains(i)) throw NoSuchElementException("index is not in the priority queue")
-        if (!greater(keys[i]!!, key))
-            throw IllegalArgumentException("Calling decreaseKey()" +
-                    "with given argument would not strictly decrease the key")
+        if (!greater(keys[i]!!, key)) {
+            throw IllegalArgumentException(
+                "Calling decreaseKey()" +
+                    "with given argument would not strictly decrease the key"
+            )
+        }
         keys[i] = key
         swim(qp[i])
     }
@@ -92,8 +95,8 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     /**
      * Increase the key associated with index `i` to the specified value.
      *
-     * @param  i the index of the key to increase
-     * @param  key increase the key associated with index `i` to this key
+     * @param i the index of the key to increase
+     * @param key increase the key associated with index `i` to this key
      * @throws IndexOutOfBoundsException unless `0 <= i < maxN`
      * @throws IllegalArgumentException if `key <=` key associated with index `i`
      * @throws NoSuchElementException no key is associated with index `i`
@@ -101,9 +104,12 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     public fun increaseKey(i: Int, key: T) {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         if (!contains(i)) throw NoSuchElementException("index is not in the priority queue")
-        if (!less(keys[i]!!, key))
-            throw IllegalArgumentException("Calling increaseKey()" +
-                    "with given argument would not strictly increase the key")
+        if (!less(keys[i]!!, key)) {
+            throw IllegalArgumentException(
+                "Calling increaseKey()" +
+                    "with given argument would not strictly increase the key"
+            )
+        }
         keys[i] = key
         sink(qp[i])
     }
@@ -132,9 +138,9 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         exch(1, size--)
         sink(1)
         assert(min == pq[size + 1])
-        qp[min] = -1        // delete
-        keys[min] = null    // to help with garbage collection
-        pq[size + 1] = -1   // not needed
+        qp[min] = -1 // delete
+        keys[min] = null // to help with garbage collection
+        pq[size + 1] = -1 // not needed
         return Pair(min, element!!)
     }
 

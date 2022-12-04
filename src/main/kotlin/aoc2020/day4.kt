@@ -4,26 +4,24 @@ import readFileAsStrings
 
 fun main() {
     val data = readFileAsStrings("aoc2020/day4")
-    val passports :MutableList<Passport> = mutableListOf()
-    val passports2 :MutableList<Passport> = mutableListOf()
+    val passports: MutableList<Passport> = mutableListOf()
+    val passports2: MutableList<Passport> = mutableListOf()
     var curPassport: Passport? = Passport()
     data.forEach { line ->
-        if(line == ""){
+        if (line == "") {
             // Part 1
-            if(curPassport!!.isValid()) {
+            if (curPassport!!.isValid()) {
                 passports.add(curPassport!!)
             }
             // Part 2
-            if(curPassport!!.isValid2()){
+            if (curPassport!!.isValid2()) {
                 passports2.add(curPassport!!)
             }
             curPassport = Passport()
-        }
-        else
-        {
+        } else {
             line.split(" ").forEach {
                 val info = it.split(":")
-                when(info[0].toLowerCase()){
+                when (info[0].toLowerCase()) {
                     "byr" -> curPassport?.byr = info[1]
                     "iyr" -> curPassport?.iyr = info[1]
                     "eyr" -> curPassport?.eyr = info[1]
@@ -40,15 +38,15 @@ fun main() {
     println("Part 2: ${passports2.size}")
 }
 
-class Passport{
-    var byr : String? = null
-    var iyr : String? = null
-    var eyr : String? = null
-    var hgt : String? = null
-    var hcl : String? = null
-    var ecl : String? = null
-    var pid : String? = null
-    var cid : String? = null
+class Passport {
+    var byr: String? = null
+    var iyr: String? = null
+    var eyr: String? = null
+    var hgt: String? = null
+    var hcl: String? = null
+    var ecl: String? = null
+    var pid: String? = null
+    var cid: String? = null
 
     fun isValid(): Boolean {
         return listOfNotNull(byr, iyr, eyr, hgt, hcl, ecl, pid).size == 7
@@ -62,14 +60,15 @@ class Passport{
         val v5 = hcl?.matches("^#([a-fA-F0-9]{6})\$".toRegex())
         val v6 = ecl?.matches("\\b(?:amb|blu|brn|gry|grn|hzl|oth)\\b".toRegex())
         val v7 = pid?.length == 9 && pid?.matches("^\\d{9}\$".toRegex()) == true
-        var v8:Boolean = false
-        if(hgt?.takeLast(2) == "cm")
+        var v8: Boolean = false
+        if (hgt?.takeLast(2) == "cm") {
             v8 = hgt?.dropLast(2)?.toIntOrNull() in 150..193
-        else if(hgt?.takeLast(2) == "in")
-            v8 =hgt?.dropLast(2)?.toIntOrNull() in 59..76
+        } else if (hgt?.takeLast(2) == "in") {
+            v8 = hgt?.dropLast(2)?.toIntOrNull() in 59..76
+        }
 
-        return isValid()&&v1&&v2&&v3&& v4 == true && v5 == true && v6 == true && v7 && v8
+        return isValid() && v1 && v2 && v3 && v4 == true && v5 == true && v6 == true && v7 && v8
     }
 
-    override fun toString() = isValid2().toString()+": byr=$byr iyr=$iyr eyr=$eyr hgt=$hgt hcl=$hcl ecl=$ecl pid=$pid cid=$cid"
+    override fun toString() = isValid2().toString() + ": byr=$byr iyr=$iyr eyr=$eyr hgt=$hgt hcl=$hcl ecl=$ecl pid=$pid cid=$cid"
 }

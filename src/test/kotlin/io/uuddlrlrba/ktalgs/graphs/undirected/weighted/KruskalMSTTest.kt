@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 
-class KruskalMSTTest: MSTTest({ graph -> KruskalMST(graph) })
+class KruskalMSTTest : MSTTest({ graph -> KruskalMST(graph) })

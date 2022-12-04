@@ -94,13 +94,17 @@ class BinarySearchTreeTest {
     @Test
     fun letters() {
         val tree = BinarySearchTree<Char, String>()
-        val letters = arrayOf('j', 'p', 'q', 's', 'f', 'o', 'g', 'v', 'h', 'm', 'x', 'z',
-                'l', 'n', 'd', 'c', 'a', 'r', 'b', 't', 'i', 'u', 'w', 'k', 'y', 'e')
+        val letters = arrayOf(
+            'j', 'p', 'q', 's', 'f', 'o', 'g', 'v', 'h', 'm', 'x', 'z',
+            'l', 'n', 'd', 'c', 'a', 'r', 'b', 't', 'i', 'u', 'w', 'k', 'y', 'e'
+        )
         letters.forEach { tree.add(it, it.toString()) }
 
         Assert.assertEquals(letters.toSet(), tree.keys)
-        Assert.assertArrayEquals(letters.map { it.toString() }.sorted().toTypedArray(),
-                tree.values.sorted().toTypedArray())
+        Assert.assertArrayEquals(
+            letters.map { it.toString() }.sorted().toTypedArray(),
+            tree.values.sorted().toTypedArray()
+        )
 
         Assert.assertEquals(26, tree.size)
         Assert.assertEquals('a', tree.min())
@@ -236,22 +240,22 @@ class BinarySearchTreeTest {
         Assert.assertEquals("625", tree[25])
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun emptyMinFails() {
         BinarySearchTree<Int, Unit>().min()
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun emptyMaxFails() {
         BinarySearchTree<Int, Unit>().max()
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun emptyPollMinFails() {
         BinarySearchTree<Int, Unit>().pollMin()
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun emptyPollMaxFails() {
         BinarySearchTree<Int, Unit>().pollMax()
     }

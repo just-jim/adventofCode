@@ -28,7 +28,7 @@ import io.uuddlrlrba.ktalgs.search.BinarySearch
  * The class represents set of comparables. The values are stored in a sorted array,
  * and the inclusion queries perform binary search, taking logarithmic time in the worst case.
  */
-class ImmutableSet<T: Comparable<T>>(values: Array<T>): Set<T> {
+class ImmutableSet<T : Comparable<T>>(values: Array<T>) : Set<T> {
     private val arr: Array<T> = values.sortedArray()
     private val bs = BinarySearch<T>() // TODO: remove
 
@@ -52,6 +52,6 @@ class ImmutableSet<T: Comparable<T>>(values: Array<T>): Set<T> {
     }
 }
 
-fun <T: Comparable<T>> immutableSetOf(vararg elements: T): ImmutableSet<out T> {
+fun <T : Comparable<T>> immutableSetOf(vararg elements: T): ImmutableSet<out T> {
     return ImmutableSet(elements.copyOf())
 }

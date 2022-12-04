@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.search
 import org.junit.Assert
 import org.junit.Test
 
-abstract class AbstractSearchTest<out T: AbstractSearchStrategy<Int>>(val strategy: T) {
+abstract class AbstractSearchTest<out T : AbstractSearchStrategy<Int>>(val strategy: T) {
     @Test
     fun emptyTest() {
         Assert.assertEquals(-1, strategy.perform(emptyArray(), 1))

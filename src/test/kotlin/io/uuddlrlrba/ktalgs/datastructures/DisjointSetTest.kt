@@ -42,7 +42,7 @@ class DisjointSetTest {
     @Test
     fun naiveTest() {
         val set = DisjointSet(10)
-        for (i in 1..set.size-1) {
+        for (i in 1..set.size - 1) {
             Assert.assertFalse(set.connected(i, i - 1))
         }
         set.union(1, 2)

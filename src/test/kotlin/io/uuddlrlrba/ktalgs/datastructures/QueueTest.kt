@@ -34,7 +34,7 @@ class QueueTest {
         Assert.assertTrue(queue.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun exceptionTest() {
         val queue = Queue<Int>()
         queue.peek()

@@ -74,7 +74,7 @@ class Dijkstra(graph: DWGraph, val from: Int) {
 
     /**
      * Returns the length of a shortest path from the source vertex `s` to vertex `v`.
-     * @param  v the destination vertex
+     * @param v the destination vertex
      * @return the length of a shortest path from the source vertex `s` to vertex `v`;
      *         `Double.POSITIVE_INFINITY` if no such path
      */
@@ -84,7 +84,7 @@ class Dijkstra(graph: DWGraph, val from: Int) {
 
     /**
      * Returns true if there is a path from the source vertex `s` to vertex `v`.
-     * @param  v the destination vertex
+     * @param v the destination vertex
      * @return `true` if there is a path from the source vertex
      *         `s` to vertex `v`; `false` otherwise
      */
@@ -94,7 +94,7 @@ class Dijkstra(graph: DWGraph, val from: Int) {
 
     /**
      * Returns a shortest path from the source vertex `s` to vertex `v`.
-     * @param  v the destination vertex
+     * @param v the destination vertex
      * @return a shortest path from the source vertex `s` to vertex `v`
      *         as an iterable of edges, and `null` if no such path
      */

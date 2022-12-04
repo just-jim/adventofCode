@@ -26,9 +26,11 @@ import io.uuddlrlrba.ktalgs.datastructures.Stack
 
 class DFS {
     companion object Implementations {
-        fun iterative(graph: Graph,
-                      preorder: ((Int) -> Unit)? = null,
-                      postorder: ((Int) -> Unit)? = null) {
+        fun iterative(
+            graph: Graph,
+            preorder: ((Int) -> Unit)? = null,
+            postorder: ((Int) -> Unit)? = null
+        ) {
             val visited = IntArray(graph.V)
             val queue = Stack<Int>()
             for (i in 0 until graph.V) {
@@ -56,9 +58,11 @@ class DFS {
             }
         }
 
-        fun recursive(graph: Graph,
-                      preorder: ((Int) -> Unit)? = null,
-                      postorder: ((Int) -> Unit)? = null) {
+        fun recursive(
+            graph: Graph,
+            preorder: ((Int) -> Unit)? = null,
+            postorder: ((Int) -> Unit)? = null
+        ) {
             val visited = BooleanArray(graph.V)
             for (i in 0..graph.V - 1) {
                 if (!visited[i]) {
@@ -67,9 +71,13 @@ class DFS {
             }
         }
 
-        private fun dfs(v: Int, graph: Graph, visited: BooleanArray,
-                        preorder: ((Int) -> Unit)? = null,
-                        postorder: ((Int) -> Unit)? = null) {
+        private fun dfs(
+            v: Int,
+            graph: Graph,
+            visited: BooleanArray,
+            preorder: ((Int) -> Unit)? = null,
+            postorder: ((Int) -> Unit)? = null
+        ) {
             visited[v] = true
             preorder?.invoke(v)
             for (w in graph.adjacentVertices(v)) {

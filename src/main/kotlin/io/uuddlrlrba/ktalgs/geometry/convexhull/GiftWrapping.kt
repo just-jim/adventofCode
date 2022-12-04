@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.geometry.convexhull
 import io.uuddlrlrba.ktalgs.datastructures.Stack
 import io.uuddlrlrba.ktalgs.geometry.Point
 
-class GiftWrapping: ConvexHullAlgorithm {
+class GiftWrapping : ConvexHullAlgorithm {
     override fun convexHull(points: Array<Point>): Collection<Point> {
         if (points.size < 3) throw IllegalArgumentException("there must be at least 3 points")
 
@@ -34,9 +34,9 @@ class GiftWrapping: ConvexHullAlgorithm {
         // Find the leftmost point
         var l = 0
         points.indices
-                .asSequence()
-                .filter { points[it].x < points[l].x }
-                .forEach { l = it }
+            .asSequence()
+            .filter { points[it].x < points[l].x }
+            .forEach { l = it }
 
         // Start from leftmost point, keep moving counterclockwise
         // until reach the start point again.  This loop runs O(h)
@@ -52,18 +52,17 @@ class GiftWrapping: ConvexHullAlgorithm {
             // is to keep track of last visited most counterclock-
             // wise point in q. If any point 'i' is more counterclock-
             // wise than q, then update q.
-            q = ( p+ 1) % points.size
+            q = (p + 1) % points.size
             points.indices
-                    .asSequence()
-                    .filter { Point.orientation(points[p], points[it], points[q]) < 0 }
-                    .forEach { q = it }
+                .asSequence()
+                .filter { Point.orientation(points[p], points[it], points[q]) < 0 }
+                .forEach { q = it }
 
             // Now q is the most counterclockwise with respect to p
             // Set p as q for next iteration, so that q is added to
             // result 'hull'
             p = q
-
-        } while (p != l)  // While we don't come to first point
+        } while (p != l) // While we don't come to first point
 
         return hull
     }

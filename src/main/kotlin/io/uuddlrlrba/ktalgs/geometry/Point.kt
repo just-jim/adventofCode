@@ -22,7 +22,7 @@
 
 package io.uuddlrlrba.ktalgs.geometry
 
-data class Point(val x: Int, val y: Int): Comparable<Point> {
+data class Point(val x: Int, val y: Int) : Comparable<Point> {
     override fun compareTo(other: Point): Int {
         if (x == other.x) return y.compareTo(other.y)
         return x.compareTo(other.x)
@@ -38,7 +38,7 @@ data class Point(val x: Int, val y: Int): Comparable<Point> {
 
     fun distanceToLine(a: Point, b: Point): Double {
         return Math.abs((b.x - a.x) * (a.y - this.y) - (a.x - this.x) * (b.y - a.y)) /
-                Math.sqrt(Math.pow((b.x - a.x).toDouble(), 2.0) + Math.pow((b.y - a.y).toDouble(), 2.0))
+            Math.sqrt(Math.pow((b.x - a.x).toDouble(), 2.0) + Math.pow((b.y - a.y).toDouble(), 2.0))
     }
 
     fun euclideanDistanceTo(that: Point): Double {

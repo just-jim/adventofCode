@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.sorts
 
-class InsertionSortTest: AbstractSortTest<InsertionSort>(InsertionSort())
+class InsertionSortTest : AbstractSortTest<InsertionSort>(InsertionSort())

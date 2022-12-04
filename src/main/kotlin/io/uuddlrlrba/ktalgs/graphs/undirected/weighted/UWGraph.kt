@@ -25,11 +25,11 @@ package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 import io.uuddlrlrba.ktalgs.graphs.Graph
 
-class UWGraph(public override val V: Int): Graph {
+class UWGraph(public override val V: Int) : Graph {
     public override var E: Int = 0
     private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
 
-    public class Edge(public val v: Int, public val w: Int, public val weight: Double): Comparable<Edge> {
+    public class Edge(public val v: Int, public val w: Int, public val weight: Double) : Comparable<Edge> {
         override fun compareTo(other: Edge): Int {
             return this.weight.compareTo(other.weight)
         }

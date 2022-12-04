@@ -22,4 +22,4 @@
 
 package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 
-class BoruvkaMSTTest: MSTTest({ graph -> BoruvkaMST(graph) })
+class BoruvkaMSTTest : MSTTest({ graph -> BoruvkaMST(graph) })

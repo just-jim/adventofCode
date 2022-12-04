@@ -13,13 +13,15 @@ fun main() {
         val password = info[2]
 
         // Part 1
-        val charCount = password.count{char.toString().contains(it)}
-        if(charCount in range[0].toInt()..range[1].toInt())
+        val charCount = password.count { char.toString().contains(it) }
+        if (charCount in range[0].toInt()..range[1].toInt()) {
             valid1++
+        }
 
         // Part 2
-        if((password[range[0].toInt()-1] == char).xor(password[range[1].toInt()-1] == char))
+        if ((password[range[0].toInt() - 1] == char).xor(password[range[1].toInt() - 1] == char)) {
             valid2++
+        }
     }
 
     println("Part 1: $valid1")

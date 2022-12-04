@@ -26,7 +26,7 @@ import io.uuddlrlrba.ktalgs.datastructures.Queue
 import io.uuddlrlrba.ktalgs.datastructures.Stack
 import io.uuddlrlrba.ktalgs.graphs.Graph
 
-class DWGraph(public override val V: Int): Graph {
+class DWGraph(public override val V: Int) : Graph {
     public override var E: Int = 0
     private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
     private val indegree: IntArray = IntArray(V)

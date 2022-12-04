@@ -34,7 +34,7 @@ class PriorityQueueTest {
         Assert.assertTrue(pq.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test(expected = NoSuchElementException::class)
     fun exceptionTest() {
         val pq = PriorityQueue<Int>(3)
         pq.peek()

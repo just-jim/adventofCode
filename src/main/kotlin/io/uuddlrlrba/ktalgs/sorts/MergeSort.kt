@@ -30,7 +30,7 @@ package io.uuddlrlrba.ktalgs.sorts
  */
 @ComparisonSort
 @StableSort
-class MergeSort: AbstractSortStrategy() {
+class MergeSort : AbstractSortStrategy() {
     override fun <T : Comparable<T>> perform(arr: Array<T>) {
         val aux = arr.clone()
         sort(arr, aux, 0, arr.size - 1)

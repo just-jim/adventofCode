@@ -29,7 +29,7 @@ package io.uuddlrlrba.ktalgs.sorts
  */
 @ComparisonSort
 @StableSort
-class InsertionSort: AbstractSortStrategy() {
+class InsertionSort : AbstractSortStrategy() {
     override fun <T : Comparable<T>> perform(arr: Array<T>) {
         for (i in 1 until arr.size) {
             for (j in i downTo 1) {

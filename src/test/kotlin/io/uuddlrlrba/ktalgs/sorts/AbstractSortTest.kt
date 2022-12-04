@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.sorts
 import org.junit.Assert
 import org.junit.Test
 
-abstract class AbstractSortTest<out T: AbstractSortStrategy>(val strategy: T) {
+abstract class AbstractSortTest<out T : AbstractSortStrategy>(val strategy: T) {
     @Test
     fun emptyTest() {
         val arr = arrayOf<Int>()

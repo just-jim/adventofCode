@@ -5,12 +5,12 @@ import readFileAsStrings
 fun main() {
     val file = readFileAsStrings("aoc2020/day13")
     val time = file[0].toInt()
-    val times = mutableMapOf<Int,Int>()
-    val map = mutableMapOf<Int,Int>()
+    val times = mutableMapOf<Int, Int>()
+    val map = mutableMapOf<Int, Int>()
     file[1].split(",").forEachIndexed { i, busId ->
-        if(busId != "x") {
+        if (busId != "x") {
             val bus = busId.toInt()
-            times[bus] = (((time / bus)+1)*bus - time)
+            times[bus] = (((time / bus) + 1) * bus - time)
             map[bus] = i
         }
     }
@@ -28,8 +28,9 @@ fun main() {
             i++
             val target = max.key * i
             if (map.all {
-                    (target + it.value - max.value)%it.key == 0L
-                }){
+                (target + it.value - max.value) % it.key == 0L
+            }
+            ) {
                 sol2 = target - max.value
                 return@lit
             }
