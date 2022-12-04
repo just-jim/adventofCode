@@ -17,5 +17,14 @@ fun array2dOfInt(sizeOuter: Int, sizeInner: Int): Array<IntArray> =
 fun array2dOfChar(sizeOuter: Int, sizeInner: Int): Array<CharArray> =
     Array(sizeOuter) { CharArray(sizeInner) }
 
+fun print2dMap(map: Array<IntArray>) {
+    for (y in map.indices) {
+        for (x in 0 until map[0].size) {
+            print(map[x][y].toString() + " ")
+        }
+        println()
+    }
+}
+
 // Use URL (maybe it will come in handy)
 // val file = URL("https://adventofcode.com/2020/day/1/input").readText()

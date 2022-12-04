@@ -10,7 +10,7 @@ fun main() {
     file.forEach { line ->
     }
 
-    val sol1 =sum
+    val sol1 = sum
     println("Part 1: $sol1")
 
     val sol2 = 0
