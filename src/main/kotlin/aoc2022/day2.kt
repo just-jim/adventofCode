@@ -1,7 +1,11 @@
 package aoc2022
 
-import aoc2022.BattleOutcome.*
-import aoc2022.RPS.*
+import aoc2022.BattleOutcome.Draw
+import aoc2022.BattleOutcome.Lose
+import aoc2022.BattleOutcome.Win
+import aoc2022.RPS.Paper
+import aoc2022.RPS.Rock
+import aoc2022.RPS.Scissors
 import readFileAsStrings
 
 enum class RPS(val score: Int) {

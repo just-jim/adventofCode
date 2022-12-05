@@ -1,0 +1,4 @@
+# don't use wildcard for Java/Kotlin imports
+[*.{java,kt,kts}]
+ij_kotlin_name_count_to_use_star_import = 999
+ij_kotlin_name_count_to_use_star_import_for_members = 999
