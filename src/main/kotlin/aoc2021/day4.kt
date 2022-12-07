@@ -30,11 +30,11 @@ fun main() {
     }
 
     var first = false
-    var lastBingo = 0
+    var lastBingo : Int
     var wonh = false
     var wonv = false
     nums.map { it.toInt() }.forEach { num ->
-        bingos.forEachIndexed { i, bingo ->
+        bingos.forEachIndexed { i, _ ->
             bingos[i].forEach { line ->
                 line.remove(num)
                 if (line.size == 0) {

@@ -21,7 +21,7 @@ fun main() {
         } else {
             line.split(" ").forEach {
                 val info = it.split(":")
-                when (info[0].toLowerCase()) {
+                when (info[0].lowercase()) {
                     "byr" -> curPassport?.byr = info[1]
                     "iyr" -> curPassport?.iyr = info[1]
                     "eyr" -> curPassport?.eyr = info[1]

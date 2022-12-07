@@ -13,7 +13,7 @@ fun main() {
         }
     }
 
-    num.forEachIndexed { i, v ->
+    num.forEachIndexed { i, _ ->
         num[i] = if (num[i] >= file.size / 2) 1 else 0
         num2[i] = if (num[i] == 1) 0 else 1
     }
