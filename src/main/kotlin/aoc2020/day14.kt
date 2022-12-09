@@ -5,7 +5,7 @@ import readFileAsStrings
 fun main() {
     val file = readFileAsStrings("aoc2020/day14")
 
-    var mask : String
+    var mask: String
     val dic: MutableMap<Int, Long> = mutableMapOf()
     val editor: MutableMap<Int, Char> = mutableMapOf()
 

@@ -30,7 +30,7 @@ fun main() {
     }
 
     var first = false
-    var lastBingo : Int
+    var lastBingo: Int
     var wonh = false
     var wonv = false
     nums.map { it.toInt() }.forEach { num ->
