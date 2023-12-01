@@ -40,14 +40,22 @@ class QuickSort : AbstractSortStrategy() {
         sort(arr, 0, arr.size - 1)
     }
 
-    private fun <T : Comparable<T>> sort(arr: Array<T>, lo: Int, hi: Int) {
+    private fun <T : Comparable<T>> sort(
+        arr: Array<T>,
+        lo: Int,
+        hi: Int,
+    ) {
         if (hi <= lo) return
         val j = partition(arr, lo, hi)
         sort(arr, lo, j - 1)
         sort(arr, j + 1, hi)
     }
 
-    private fun <T : Comparable<T>> partition(arr: Array<T>, lo: Int, hi: Int): Int {
+    private fun <T : Comparable<T>> partition(
+        arr: Array<T>,
+        lo: Int,
+        hi: Int,
+    ): Int {
         var i = lo
         var j = hi + 1
         val v = arr[lo]

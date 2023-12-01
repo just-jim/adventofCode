@@ -70,7 +70,10 @@ class PrimMST(G: UWGraph) : MST {
         }
     }
 
-    private fun scan(e: UWGraph.Edge, v: Int) {
+    private fun scan(
+        e: UWGraph.Edge,
+        v: Int,
+    ) {
         val w = e.other(v)
         if (!visited[w]) { // v-w is obsolete edge
             if (e.weight < distTo[w]) {

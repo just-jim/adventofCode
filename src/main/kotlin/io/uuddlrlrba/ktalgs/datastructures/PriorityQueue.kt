@@ -93,7 +93,12 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
     }
 
     companion object {
-        private fun<T> greater(arr: Array<T?>, i: Int, j: Int, comparator: Comparator<T>? = null): Boolean {
+        private fun <T> greater(
+            arr: Array<T?>,
+            i: Int,
+            j: Int,
+            comparator: Comparator<T>? = null,
+        ): Boolean {
             if (comparator != null) {
                 return comparator.compare(arr[i], arr[j]) > 0
             } else {
@@ -102,7 +107,12 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
             }
         }
 
-        public fun<T> sink(arr: Array<T?>, a: Int, size: Int, comparator: Comparator<T>? = null) {
+        public fun <T> sink(
+            arr: Array<T?>,
+            a: Int,
+            size: Int,
+            comparator: Comparator<T>? = null,
+        ) {
             var k = a
             while (2 * k <= size) {
                 var j = 2 * k
@@ -113,7 +123,11 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
             }
         }
 
-        public fun<T> swim(arr: Array<T?>, size: Int, comparator: Comparator<T>? = null) {
+        public fun <T> swim(
+            arr: Array<T?>,
+            size: Int,
+            comparator: Comparator<T>? = null,
+        ) {
             var n = size
             while (n > 1 && greater(arr, n / 2, n, comparator)) {
                 arr.exch(n, n / 2)

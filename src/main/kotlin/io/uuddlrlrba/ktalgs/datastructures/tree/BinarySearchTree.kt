@@ -31,7 +31,7 @@ class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
         override var value: V,
         var left: Node<K, V>? = null,
         var right: Node<K, V>? = null,
-        var size: Int = 1
+        var size: Int = 1,
     ) : Map.Entry<K, V>
 
     private var root: Node<K, V>? = null
@@ -63,11 +63,12 @@ class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
     override fun get(key: K): V? {
         var x = root
         while (x != null) {
-            x = when {
-                key < x.key -> x.left
-                key > x.key -> x.right
-                else -> return x.value
-            }
+            x =
+                when {
+                    key < x.key -> x.left
+                    key > x.key -> x.right
+                    else -> return x.value
+                }
         }
         return null
     }
@@ -80,11 +81,18 @@ class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
         return any { it.value == value }
     }
 
-    fun add(key: K, value: V) {
+    fun add(
+        key: K,
+        value: V,
+    ) {
         root = add(key, value, root)
     }
 
-    private fun add(key: K, value: V, x: Node<K, V>?): Node<K, V> {
+    private fun add(
+        key: K,
+        value: V,
+        x: Node<K, V>?,
+    ): Node<K, V> {
         if (x == null) return Node(key, value)
         when {
             key < x.key -> x.left = add(key, value, x.left)
@@ -99,7 +107,10 @@ class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
         root = remove(key, root)
     }
 
-    private fun remove(key: K, root: Node<K, V>?): Node<K, V>? {
+    private fun remove(
+        key: K,
+        root: Node<K, V>?,
+    ): Node<K, V>? {
         var x: Node<K, V> = root ?: throw NoSuchElementException()
         when {
             key < x.key -> x.left = remove(key, x.left)
@@ -182,7 +193,10 @@ class BinarySearchTree<K : Comparable<K>, V> : Map<K, V> {
         return x
     }
 
-    private fun inorder(x: Node<K, V>?, lambda: (Node<K, V>) -> (Unit)) {
+    private fun inorder(
+        x: Node<K, V>?,
+        lambda: (Node<K, V>) -> (Unit),
+    ) {
         if (x == null) return
         inorder(x.left, lambda)
         lambda(x)

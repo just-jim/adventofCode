@@ -16,7 +16,11 @@ fun main() {
         }
     }
     val found = 0
-    fun basinMarker(x: Int, y: Int): Int {
+
+    fun basinMarker(
+        x: Int,
+        y: Int,
+    ): Int {
         var newCount = 0
         val v = map[x][y]
         // up

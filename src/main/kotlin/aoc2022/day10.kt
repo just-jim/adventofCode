@@ -40,7 +40,9 @@ fun main() {
         }
 
         // Increase the register X after step completion
-        if (command == "addx") { x += parts[1].toInt() }
+        if (command == "addx") {
+            x += parts[1].toInt()
+        }
     }
 
     val sol1 = sum

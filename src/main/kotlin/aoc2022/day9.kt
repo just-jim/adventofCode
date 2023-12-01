@@ -26,8 +26,16 @@ class Rope() {
 
         val previousKnot = knot.parent.knots[knot.index - 1]
         if (abs(previousKnot.x - knot.x) > 1 || abs(previousKnot.y - knot.y) > 1) {
-            if (previousKnot.x > knot.x) knot.x++ else if (previousKnot.x < knot.x) knot.x--
-            if (previousKnot.y > knot.y) knot.y++ else if (previousKnot.y < knot.y) knot.y--
+            if (previousKnot.x > knot.x) {
+                knot.x++
+            } else if (previousKnot.x < knot.x) {
+                knot.x--
+            }
+            if (previousKnot.y > knot.y) {
+                knot.y++
+            } else if (previousKnot.y < knot.y) {
+                knot.y--
+            }
         }
     }
 
@@ -55,11 +63,12 @@ class Knot() {
         this.index = index
     }
 
-    override fun toString(): String = when (index) {
-        0 -> "Head"
-        parent.knots.size - 1 -> "Tail"
-        else -> index.toString()
-    }
+    override fun toString(): String =
+        when (index) {
+            0 -> "Head"
+            parent.knots.size - 1 -> "Tail"
+            else -> index.toString()
+        }
 }
 
 fun main() {

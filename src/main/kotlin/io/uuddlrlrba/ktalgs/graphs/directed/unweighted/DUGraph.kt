@@ -30,7 +30,10 @@ class DUGraph(public override val V: Int) : Graph {
     private val adj: Array<Queue<Int>> = Array(V) { Queue<Int>() }
     private val indegree: IntArray = IntArray(V)
 
-    public fun addEdge(from: Int, to: Int) {
+    public fun addEdge(
+        from: Int,
+        to: Int,
+    ) {
         adj[from].add(to)
         indegree[to]++
         E++

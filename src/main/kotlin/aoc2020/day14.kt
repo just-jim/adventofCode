@@ -32,7 +32,11 @@ fun main() {
         if (it.contains("mask")) {
             editor.clear()
             mask = it.split(" = ")[1]
-            mask.forEachIndexed { i, c -> if (c != '0') { editor[i] = c } }
+            mask.forEachIndexed { i, c ->
+                if (c != '0') {
+                    editor[i] = c
+                }
+            }
         } else {
             val parts = it.split(" = ")
             val memIndex = parts[0].removePrefix("mem[").removeSuffix("]").toInt()

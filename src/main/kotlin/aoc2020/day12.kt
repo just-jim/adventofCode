@@ -12,7 +12,10 @@ fun main() {
         var wx: Int = 10
         var wy: Int = 1
 
-        fun navigate(command: String, value: Int) {
+        fun navigate(
+            command: String,
+            value: Int,
+        ) {
             when (command) {
                 "N" -> y += value
                 "E" -> x += value
@@ -21,7 +24,10 @@ fun main() {
             }
         }
 
-        fun navigateWaypoint(command: String, value: Int) {
+        fun navigateWaypoint(
+            command: String,
+            value: Int,
+        ) {
             when (command) {
                 "N" -> wy += value
                 "E" -> wx += value
@@ -45,7 +51,10 @@ fun main() {
             y += value * wy
         }
 
-        fun turn(command: String, value: Int) {
+        fun turn(
+            command: String,
+            value: Int,
+        ) {
             val turns = (value / 90) % 4
             when (command) {
                 "L" -> orientation -= turns
@@ -56,7 +65,10 @@ fun main() {
             }
         }
 
-        fun turnWaypoint(command: String, value: Int) {
+        fun turnWaypoint(
+            command: String,
+            value: Int,
+        ) {
             val turns = (value / 90) % 4
             when (command) {
                 "L" -> for (i in 0 until turns) turnWaypointLeft()

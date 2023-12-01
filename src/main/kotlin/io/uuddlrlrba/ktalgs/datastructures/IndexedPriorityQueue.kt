@@ -60,7 +60,10 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if there already is an item associated with index {@code i}
      */
-    public fun insert(i: Int, key: T) {
+    public fun insert(
+        i: Int,
+        key: T,
+    ) {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         if (contains(i)) throw IllegalArgumentException("index is already in the priority queue")
         size++
@@ -79,13 +82,16 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
      * @throws IllegalArgumentException if `key >=` key associated with index `i`
      * @throws NoSuchElementException no key is associated with index `i`
      */
-    public fun decreaseKey(i: Int, key: T) {
+    public fun decreaseKey(
+        i: Int,
+        key: T,
+    ) {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         if (!contains(i)) throw NoSuchElementException("index is not in the priority queue")
         if (!greater(keys[i]!!, key)) {
             throw IllegalArgumentException(
                 "Calling decreaseKey()" +
-                    "with given argument would not strictly decrease the key"
+                    "with given argument would not strictly decrease the key",
             )
         }
         keys[i] = key
@@ -101,13 +107,16 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
      * @throws IllegalArgumentException if `key <=` key associated with index `i`
      * @throws NoSuchElementException no key is associated with index `i`
      */
-    public fun increaseKey(i: Int, key: T) {
+    public fun increaseKey(
+        i: Int,
+        key: T,
+    ) {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         if (!contains(i)) throw NoSuchElementException("index is not in the priority queue")
         if (!less(keys[i]!!, key)) {
             throw IllegalArgumentException(
                 "Calling increaseKey()" +
-                    "with given argument would not strictly increase the key"
+                    "with given argument would not strictly increase the key",
             )
         }
         keys[i] = key
@@ -144,7 +153,10 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         return Pair(min, element!!)
     }
 
-    private fun less(x: T, y: T): Boolean {
+    private fun less(
+        x: T,
+        y: T,
+    ): Boolean {
         return if (comparator != null) {
             comparator.compare(x, y) < 0
         } else {
@@ -153,7 +165,10 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         }
     }
 
-    private fun greater(x: T, y: T): Boolean {
+    private fun greater(
+        x: T,
+        y: T,
+    ): Boolean {
         return if (comparator != null) {
             comparator.compare(x, y) > 0
         } else {
@@ -162,11 +177,17 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         }
     }
 
-    private fun greater(i: Int, j: Int): Boolean {
+    private fun greater(
+        i: Int,
+        j: Int,
+    ): Boolean {
         return greater(keys[pq[i]]!!, keys[pq[j]]!!)
     }
 
-    private fun exch(i: Int, j: Int) {
+    private fun exch(
+        i: Int,
+        j: Int,
+    ) {
         val swap = pq[i]
         pq[i] = pq[j]
         pq[j] = swap

@@ -28,14 +28,15 @@ import org.junit.Test
 class QuadTreeTest {
     @Test
     fun naiveTest1() {
-        val qt = quadTreeOf(
-            Rect(0, 0, 100, 100),
-            Point(5, 20) to "Foo",
-            Point(50, 32) to "Bar",
-            Point(47, 96) to "Baz",
-            Point(50, 50) to "Bing",
-            Point(12, 0) to "Bong"
-        )
+        val qt =
+            quadTreeOf(
+                Rect(0, 0, 100, 100),
+                Point(5, 20) to "Foo",
+                Point(50, 32) to "Bar",
+                Point(47, 96) to "Baz",
+                Point(50, 50) to "Bing",
+                Point(12, 0) to "Bong",
+            )
 
         val points1 = qt[Rect(4, 0, 51, 98)].sorted()
         Assert.assertEquals(listOf("Bar", "Baz", "Bing", "Bong", "Foo"), points1)

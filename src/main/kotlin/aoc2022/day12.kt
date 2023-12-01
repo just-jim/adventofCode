@@ -7,6 +7,7 @@ import readFileAsStrings
 
 // Get Pair matrix coordinates from index
 fun Int.toPair(forMap: Array<IntArray>) = Pair(this % forMap.size, this / forMap.size)
+
 fun Pair<Int, Int>.toIndex(forMap: Array<IntArray>) = this.second * forMap.size + this.first
 
 // Get amount of nodes from matrix
@@ -14,23 +15,38 @@ fun Array<IntArray>.nodes() = this.size * this[0].size
 
 // Check cord validity
 fun Int.inBounds(forMap: Array<IntArray>) = this in 0 until forMap.nodes()
+
 fun Int.validLeft(forMap: Array<IntArray>) = this.inBounds(forMap) && this % (forMap.size) != forMap.size - 1
+
 fun Int.validRight(forMap: Array<IntArray>) = this.inBounds(forMap) && this % forMap.size != 0
+
 fun Int.validUp(forMap: Array<IntArray>) = this.inBounds(forMap)
+
 fun Int.validDown(forMap: Array<IntArray>) = this.inBounds(forMap)
 
-fun Int.canGo(forMap: Array<IntArray>, current: Int): Boolean {
+fun Int.canGo(
+    forMap: Array<IntArray>,
+    current: Int,
+): Boolean {
     val targetHeight = forMap[this.toPair(forMap).first][this.toPair(forMap).second]
     val currentHeight = forMap[current.toPair(forMap).first][current.toPair(forMap).second]
     return targetHeight <= currentHeight + 1
 }
 
 // Graph creation functions
-fun addEdge(from: Int, to: Int, weight: Int, forGraph: DWGraph) {
+fun addEdge(
+    from: Int,
+    to: Int,
+    weight: Int,
+    forGraph: DWGraph,
+) {
     forGraph.addEdge(from, to, weight.toDouble())
 }
 
-fun addEdges(fromMap: Array<IntArray>, forGraph: DWGraph) {
+fun addEdges(
+    fromMap: Array<IntArray>,
+    forGraph: DWGraph,
+) {
     for (i in 0 until fromMap.nodes()) {
         val left = i - 1
         val right = i + 1
@@ -55,23 +71,24 @@ fun main() {
     val map = array2dOfInt(file[0].length, file.size)
     file.forEachIndexed { y, line ->
         line.forEachIndexed { x, tile ->
-            map[x][y] = when (tile) {
-                'S' -> {
-                    start = Pair(x, y)
-                    'a'.code - 97
+            map[x][y] =
+                when (tile) {
+                    'S' -> {
+                        start = Pair(x, y)
+                        'a'.code - 97
+                    }
+                    'E' -> {
+                        target = Pair(x, y)
+                        'z'.code - 97
+                    }
+                    'a' -> {
+                        starts.add(Pair(x, y))
+                        tile.code - 97
+                    }
+                    else -> {
+                        tile.code - 97
+                    }
                 }
-                'E' -> {
-                    target = Pair(x, y)
-                    'z'.code - 97
-                }
-                'a' -> {
-                    starts.add(Pair(x, y))
-                    tile.code - 97
-                }
-                else -> {
-                    tile.code - 97
-                }
-            }
         }
     }
 

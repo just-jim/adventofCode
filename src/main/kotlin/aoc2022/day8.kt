@@ -20,7 +20,10 @@ fun main() {
     print2dMap(map)
     println()
 
-    fun checkIfVisible(x: Int, y: Int): String {
+    fun checkIfVisible(
+        x: Int,
+        y: Int,
+    ): String {
         // Is it on edge?
         if (x == 0 || x == l || y == 0 || y == l) return "edge"
         // Is it visible from left?
@@ -35,7 +38,10 @@ fun main() {
         return "invisible"
     }
 
-    fun calculateScenicScore(x: Int, y: Int): Int {
+    fun calculateScenicScore(
+        x: Int,
+        y: Int,
+    ): Int {
         // from left
 
         var left = 0

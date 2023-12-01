@@ -9,9 +9,10 @@ fun main() {
     fun Pair<Int, Int>.containedIn(otherPair: Pair<Int, Int>): Boolean =
         (this.first >= otherPair.first) and (this.second <= otherPair.second)
 
-    fun Pair<Int, Int>.overlapWith(otherPair: Pair<Int, Int>): Boolean = (
-        ((this.first >= otherPair.first) and (this.first <= otherPair.second))
-            or ((this.second >= otherPair.first) and (this.second <= otherPair.second))
+    fun Pair<Int, Int>.overlapWith(otherPair: Pair<Int, Int>): Boolean =
+        (
+            ((this.first >= otherPair.first) and (this.first <= otherPair.second))
+                or ((this.second >= otherPair.first) and (this.second <= otherPair.second))
         )
 
     var sum = 0

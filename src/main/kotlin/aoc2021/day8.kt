@@ -37,7 +37,10 @@ fun linesToNumber(lines: Int): List<Int> {
     }
 }
 
-fun guessNum(num: List<Char>, signals: Map<Int, List<List<Char>>>): Int {
+fun guessNum(
+    num: List<Char>,
+    signals: Map<Int, List<List<Char>>>,
+): Int {
     return when (num.size) {
         2 -> 1
         3 -> 7

@@ -29,7 +29,7 @@ class DFS {
         fun iterative(
             graph: Graph,
             preorder: ((Int) -> Unit)? = null,
-            postorder: ((Int) -> Unit)? = null
+            postorder: ((Int) -> Unit)? = null,
         ) {
             val visited = IntArray(graph.V)
             val queue = Stack<Int>()
@@ -61,7 +61,7 @@ class DFS {
         fun recursive(
             graph: Graph,
             preorder: ((Int) -> Unit)? = null,
-            postorder: ((Int) -> Unit)? = null
+            postorder: ((Int) -> Unit)? = null,
         ) {
             val visited = BooleanArray(graph.V)
             for (i in 0..graph.V - 1) {
@@ -76,7 +76,7 @@ class DFS {
             graph: Graph,
             visited: BooleanArray,
             preorder: ((Int) -> Unit)? = null,
-            postorder: ((Int) -> Unit)? = null
+            postorder: ((Int) -> Unit)? = null,
         ) {
             visited[v] = true
             preorder?.invoke(v)

@@ -33,7 +33,11 @@ class DWGraph(public override val V: Int) : Graph {
 
     public class Edge(public val from: Int, public val to: Int, public val weight: Double)
 
-    public fun addEdge(from: Int, to: Int, weight: Double) {
+    public fun addEdge(
+        from: Int,
+        to: Int,
+        weight: Double,
+    ) {
         val edge = Edge(from, to, weight)
         adj[from].add(edge)
         indegree[to]++

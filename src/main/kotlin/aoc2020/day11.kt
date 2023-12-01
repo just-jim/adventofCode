@@ -15,7 +15,7 @@ fun main() {
         var ur: Chair? = null,
         var dl: Chair? = null,
         var dr: Chair? = null,
-        var nextStatus: Char = '-'
+        var nextStatus: Char = '-',
     ) {
         override fun toString(): String = "$cords : $status"
 
@@ -71,13 +71,14 @@ fun main() {
         fun calculateNextGen(extended: Boolean) {
             val neighbours = countNeighbourghs(extended)
 
-            nextStatus = if (status == '#' && neighbours >= (if (extended) 5 else 4)) {
-                'L'
-            } else if (status == 'L' && neighbours == 0) {
-                '#'
-            } else {
-                status
-            }
+            nextStatus =
+                if (status == '#' && neighbours >= (if (extended) 5 else 4)) {
+                    'L'
+                } else if (status == 'L' && neighbours == 0) {
+                    '#'
+                } else {
+                    status
+                }
         }
 
         fun unChanged(): Boolean {
@@ -92,8 +93,7 @@ fun main() {
     data class Chairs(
         var map: Array<CharArray>,
         var dimensions: Pair<Int, Int>,
-        val dic: MutableMap<Pair<Int, Int>, Chair> = mutableMapOf()
-
+        val dic: MutableMap<Pair<Int, Int>, Chair> = mutableMapOf(),
     ) {
         override fun toString(): String {
             var text = ""

@@ -58,7 +58,7 @@ class GrahamScan : ConvexHullAlgorithm {
                     -Point.orientation(points[0], q1, q2) // both above or below
                 }
                 // Note: ccw() recomputes dx1, dy1, dx2, and dy2
-            }
+            },
         )
 
         hull.push(points[0])

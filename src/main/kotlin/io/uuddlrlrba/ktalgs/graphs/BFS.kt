@@ -26,7 +26,10 @@ import io.uuddlrlrba.ktalgs.datastructures.Queue
 
 class BFS {
     companion object Implementations {
-        fun iterative(graph: Graph, levelOrder: ((Int) -> Unit)? = null) {
+        fun iterative(
+            graph: Graph,
+            levelOrder: ((Int) -> Unit)? = null,
+        ) {
             val visited = BooleanArray(graph.V)
             val queue = Queue<Int>()
             for (i in 0 until graph.V) {

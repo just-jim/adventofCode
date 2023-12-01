@@ -4,7 +4,7 @@ import readFileAsStrings
 
 enum class Type {
     File,
-    Directory
+    Directory,
 }
 
 class Dir() {
@@ -40,11 +40,12 @@ class Dir() {
     fun calculateTotalSize(): Int {
         if (dirSize != null) return dirSize!!
 
-        dirSize = if (children.isNotEmpty()) {
-            children.values.sumOf { it.calculateTotalSize() }
-        } else {
-            size
-        }
+        dirSize =
+            if (children.isNotEmpty()) {
+                children.values.sumOf { it.calculateTotalSize() }
+            } else {
+                size
+            }
         return dirSize!!
     }
 

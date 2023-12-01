@@ -22,11 +22,17 @@
 
 package io.uuddlrlrba.ktalgs.math
 
-fun sqrt(c: Int, e: Double = 1e-15): Double {
+fun sqrt(
+    c: Int,
+    e: Double = 1e-15,
+): Double {
     return sqrt(c.toDouble(), e)
 }
 
-fun sqrt(c: Double, e: Double = 1e-15): Double {
+fun sqrt(
+    c: Double,
+    e: Double = 1e-15,
+): Double {
     if (c < 0) return Double.NaN
     var t = c
     while (Math.abs(t - c / t) > e * t)

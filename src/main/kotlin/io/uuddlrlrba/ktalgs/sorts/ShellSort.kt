@@ -33,7 +33,7 @@ package io.uuddlrlrba.ktalgs.sorts
 @ComparisonSort
 @StableSort
 class ShellSort : AbstractSortStrategy() {
-    public override fun<T : Comparable<T>> perform(arr: Array<T>) {
+    public override fun <T : Comparable<T>> perform(arr: Array<T>) {
         var h = 1
         while (h < arr.size / 3) {
             h = h * 3 + 1

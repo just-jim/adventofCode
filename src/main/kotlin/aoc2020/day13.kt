@@ -28,8 +28,8 @@ fun main() {
             i++
             val target = max.key * i
             if (map.all {
-                (target + it.value - max.value) % it.key == 0L
-            }
+                    (target + it.value - max.value) % it.key == 0L
+                }
             ) {
                 sol2 = target - max.value
                 return@lit

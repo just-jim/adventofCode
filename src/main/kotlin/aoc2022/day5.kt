@@ -16,7 +16,9 @@ fun main() {
     }
 
     file.forEach { line ->
-        if (line.isEmpty() || line[1].isDigit()) { return@forEach } else if (line[0] == '[' || line[0] == ' ') {
+        if (line.isEmpty() || line[1].isDigit()) {
+            return@forEach
+        } else if (line[0] == '[' || line[0] == ' ') {
             line.chunked(4).forEachIndexed { i, crate ->
                 if (crate[0] == '[') {
                     stacks[i].addLast(crate[1].toString())

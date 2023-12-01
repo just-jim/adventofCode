@@ -15,7 +15,10 @@ fun main() {
         }
     }
 
-    fun plusOne(x: Int, y: Int) {
+    fun plusOne(
+        x: Int,
+        y: Int,
+    ) {
         if (x in 0 until l && y in 0 until l) {
             if (map[x][y] < 10) {
                 map[x][y]++

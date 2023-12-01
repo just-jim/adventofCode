@@ -43,21 +43,22 @@ class VoronoiTest {
 
     @Test
     fun test2() {
-        val v = Voronoi(
-            listOf(
-                Point(41, 98),
-                Point(59, 97),
-                Point(87, 26),
-                Point(3, 33),
-                Point(18, 46),
-                Point(57, 81),
-                Point(65, 29),
-                Point(20, 32),
-                Point(73, 96),
-                Point(81, 90)
-            ),
-            Point.EUCLIDEAN_DISTANCE_FUNC
-        )
+        val v =
+            Voronoi(
+                listOf(
+                    Point(41, 98),
+                    Point(59, 97),
+                    Point(87, 26),
+                    Point(3, 33),
+                    Point(18, 46),
+                    Point(57, 81),
+                    Point(65, 29),
+                    Point(20, 32),
+                    Point(73, 96),
+                    Point(81, 90),
+                ),
+                Point.EUCLIDEAN_DISTANCE_FUNC,
+            )
         Assert.assertEquals(10, v.count)
         Assert.assertEquals(Point(3, 33), v.region(Point(0, 0)))
         Assert.assertEquals(Point(3, 33), v.region(Point(0, 10)))
@@ -163,36 +164,37 @@ class VoronoiTest {
 
     @Test
     fun test3() {
-        val v = Voronoi(
-            listOf(
-                Point(16, 9),
-                Point(17, 2),
-                Point(5, 19),
-                Point(3, 24),
-                Point(17, 12),
-                Point(15, 10),
-                Point(12, 1),
-                Point(21, 4),
-                Point(11, 21),
-                Point(1, 20),
-                Point(11, 13),
-                Point(13, 4),
-                Point(15, 8),
-                Point(22, 20),
-                Point(21, 20),
-                Point(24, 0),
-                Point(2, 12),
-                Point(3, 22),
-                Point(19, 5),
-                Point(19, 7),
-                Point(19, 8),
-                Point(0, 18),
-                Point(17, 20),
-                Point(17, 0),
-                Point(13, 0)
-            ),
-            Point.EUCLIDEAN_DISTANCE_FUNC
-        )
+        val v =
+            Voronoi(
+                listOf(
+                    Point(16, 9),
+                    Point(17, 2),
+                    Point(5, 19),
+                    Point(3, 24),
+                    Point(17, 12),
+                    Point(15, 10),
+                    Point(12, 1),
+                    Point(21, 4),
+                    Point(11, 21),
+                    Point(1, 20),
+                    Point(11, 13),
+                    Point(13, 4),
+                    Point(15, 8),
+                    Point(22, 20),
+                    Point(21, 20),
+                    Point(24, 0),
+                    Point(2, 12),
+                    Point(3, 22),
+                    Point(19, 5),
+                    Point(19, 7),
+                    Point(19, 8),
+                    Point(0, 18),
+                    Point(17, 20),
+                    Point(17, 0),
+                    Point(13, 0),
+                ),
+                Point.EUCLIDEAN_DISTANCE_FUNC,
+            )
         Assert.assertEquals(25, v.count)
         Assert.assertEquals(Point(12, 1), v.region(Point(0, 0)))
         Assert.assertEquals(Point(2, 12), v.region(Point(0, 5)))
@@ -223,14 +225,15 @@ class VoronoiTest {
 
     @Test
     fun test4() {
-        val v = Voronoi(
-            listOf(
-                Point(7, 2),
-                Point(6, 6),
-                Point(8, 9)
-            ),
-            Point.EUCLIDEAN_DISTANCE_FUNC
-        )
+        val v =
+            Voronoi(
+                listOf(
+                    Point(7, 2),
+                    Point(6, 6),
+                    Point(8, 9),
+                ),
+                Point.EUCLIDEAN_DISTANCE_FUNC,
+            )
         Assert.assertEquals(Point(7, 2), v.region(Point(0, 0)))
         Assert.assertEquals(Point(7, 2), v.region(Point(0, 2)))
         Assert.assertEquals(Point(6, 6), v.region(Point(0, 4)))
@@ -260,61 +263,62 @@ class VoronoiTest {
 
     @Test
     fun test5() {
-        val v = Voronoi(
-            listOf(
-                Point(44, 27),
-                Point(2, 35),
-                Point(24, 10),
-                Point(45, 25),
-                Point(29, 39),
-                Point(32, 9),
-                Point(15, 16),
-                Point(17, 40),
-                Point(7, 6),
-                Point(6, 5),
-                Point(39, 15),
-                Point(20, 1),
-                Point(29, 20),
-                Point(6, 36),
-                Point(40, 28),
-                Point(41, 4),
-                Point(41, 34),
-                Point(36, 11),
-                Point(8, 19),
-                Point(37, 34),
-                Point(29, 35),
-                Point(44, 42),
-                Point(20, 45),
-                Point(10, 43),
-                Point(37, 39),
-                Point(42, 9),
-                Point(11, 32),
-                Point(16, 38),
-                Point(32, 41),
-                Point(23, 12),
-                Point(15, 40),
-                Point(5, 42),
-                Point(7, 31),
-                Point(2, 23),
-                Point(42, 36),
-                Point(10, 12),
-                Point(47, 27),
-                Point(27, 20),
-                Point(26, 1),
-                Point(23, 25),
-                Point(47, 7),
-                Point(4, 36),
-                Point(49, 7),
-                Point(40, 26),
-                Point(13, 21),
-                Point(11, 6),
-                Point(34, 21),
-                Point(1, 40),
-                Point(43, 30),
-                Point(12, 48)
-            ),
-            Point.EUCLIDEAN_DISTANCE_FUNC
-        )
+        val v =
+            Voronoi(
+                listOf(
+                    Point(44, 27),
+                    Point(2, 35),
+                    Point(24, 10),
+                    Point(45, 25),
+                    Point(29, 39),
+                    Point(32, 9),
+                    Point(15, 16),
+                    Point(17, 40),
+                    Point(7, 6),
+                    Point(6, 5),
+                    Point(39, 15),
+                    Point(20, 1),
+                    Point(29, 20),
+                    Point(6, 36),
+                    Point(40, 28),
+                    Point(41, 4),
+                    Point(41, 34),
+                    Point(36, 11),
+                    Point(8, 19),
+                    Point(37, 34),
+                    Point(29, 35),
+                    Point(44, 42),
+                    Point(20, 45),
+                    Point(10, 43),
+                    Point(37, 39),
+                    Point(42, 9),
+                    Point(11, 32),
+                    Point(16, 38),
+                    Point(32, 41),
+                    Point(23, 12),
+                    Point(15, 40),
+                    Point(5, 42),
+                    Point(7, 31),
+                    Point(2, 23),
+                    Point(42, 36),
+                    Point(10, 12),
+                    Point(47, 27),
+                    Point(27, 20),
+                    Point(26, 1),
+                    Point(23, 25),
+                    Point(47, 7),
+                    Point(4, 36),
+                    Point(49, 7),
+                    Point(40, 26),
+                    Point(13, 21),
+                    Point(11, 6),
+                    Point(34, 21),
+                    Point(1, 40),
+                    Point(43, 30),
+                    Point(12, 48),
+                ),
+                Point.EUCLIDEAN_DISTANCE_FUNC,
+            )
         Assert.assertEquals(50, v.count)
         Assert.assertEquals(Point(6, 5), v.region(Point(0, 0)))
         Assert.assertEquals(Point(6, 5), v.region(Point(0, 2)))
@@ -945,21 +949,22 @@ class VoronoiTest {
 
     @Test
     fun testManhattanDistance() {
-        val v = Voronoi(
-            listOf(
-                Point(1, 6),
-                Point(4, 3),
-                Point(5, 3),
-                Point(6, 8),
-                Point(9, 6),
-                Point(3, 3),
-                Point(5, 1),
-                Point(1, 0),
-                Point(4, 3),
-                Point(3, 6)
-            ),
-            Point.MANHATTAN_DISTANCE_FUNC
-        )
+        val v =
+            Voronoi(
+                listOf(
+                    Point(1, 6),
+                    Point(4, 3),
+                    Point(5, 3),
+                    Point(6, 8),
+                    Point(9, 6),
+                    Point(3, 3),
+                    Point(5, 1),
+                    Point(1, 0),
+                    Point(4, 3),
+                    Point(3, 6),
+                ),
+                Point.MANHATTAN_DISTANCE_FUNC,
+            )
         Assert.assertEquals(Point(1, 0), v.region(Point(0, 0)))
         Assert.assertEquals(Point(1, 6), v.region(Point(0, 4)))
         Assert.assertEquals(Point(1, 6), v.region(Point(0, 8)))

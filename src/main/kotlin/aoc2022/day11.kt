@@ -3,7 +3,7 @@ package aoc2022
 import readFileAsStrings
 
 data class Item(
-    var worry: Long
+    var worry: Long,
 )
 
 class Monkey(
@@ -13,11 +13,12 @@ class Monkey(
     var operationValueStr: String,
     var divisibleBy: Long,
     var trueMonkeyId: Int,
-    var falseMonkeyId: Int
+    var falseMonkeyId: Int,
 ) {
     private lateinit var trueMonkey: Monkey
     private lateinit var falseMonkey: Monkey
     var inspections: Long = 0L
+
     fun init(monkeys: List<Monkey>) {
         trueMonkey = monkeys[trueMonkeyId]
         falseMonkey = monkeys[falseMonkeyId]
@@ -38,17 +39,18 @@ class Monkey(
     private fun inspect(item: Item) {
         print("    Worry level ")
         val operationValue = operationValue(item)
-        item.worry = when (operationSign) {
-            "+" -> {
-                print("increases ")
-                item.worry + operationValue
+        item.worry =
+            when (operationSign) {
+                "+" -> {
+                    print("increases ")
+                    item.worry + operationValue
+                }
+                "*" -> {
+                    print("is multiplied ")
+                    item.worry * operationValue
+                }
+                else -> item.worry
             }
-            "*" -> {
-                print("is multiplied ")
-                item.worry * operationValue
-            }
-            else -> item.worry
-        }
         println("by $operationValue to ${item.worry}.")
 
         inspections++
@@ -70,7 +72,10 @@ class Monkey(
         return isDivisible
     }
 
-    private fun passItem(item: Item, monkey: Monkey) {
+    private fun passItem(
+        item: Item,
+        monkey: Monkey,
+    ) {
         monkey.items.add(item)
         println("    Item with worry level ${item.worry} is thrown to monkey ${monkey.id}.")
     }
@@ -90,17 +95,18 @@ fun main() {
 
     var sum = 0
 
-    val monkeys = file.chunked(7).mapIndexed { i, monkeyData ->
-        Monkey(
-            id = i,
-            items = monkeyData[1].split(":")[1].replace(" ", "").split(",").map { Item(it.toLong()) }.toMutableList(),
-            operationSign = monkeyData[2].trim().split(" ")[4],
-            operationValueStr = monkeyData[2].trim().split(" ").last(),
-            divisibleBy = monkeyData[3].trim().split(" ").last().toLong(),
-            trueMonkeyId = monkeyData[4].trim().split(" ").last().toInt(),
-            falseMonkeyId = monkeyData[5].trim().split(" ").last().toInt()
-        )
-    }
+    val monkeys =
+        file.chunked(7).mapIndexed { i, monkeyData ->
+            Monkey(
+                id = i,
+                items = monkeyData[1].split(":")[1].replace(" ", "").split(",").map { Item(it.toLong()) }.toMutableList(),
+                operationSign = monkeyData[2].trim().split(" ")[4],
+                operationValueStr = monkeyData[2].trim().split(" ").last(),
+                divisibleBy = monkeyData[3].trim().split(" ").last().toLong(),
+                trueMonkeyId = monkeyData[4].trim().split(" ").last().toInt(),
+                falseMonkeyId = monkeyData[5].trim().split(" ").last().toInt(),
+            )
+        }
 
     // Initialize monkeys
     monkeys.forEach { it.init(monkeys) }

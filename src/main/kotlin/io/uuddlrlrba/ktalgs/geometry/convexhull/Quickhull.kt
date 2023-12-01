@@ -32,10 +32,15 @@ class Quickhull : ConvexHullAlgorithm {
         return quickHull(points.asList(), left, right) + quickHull(points.asList(), right, left)
     }
 
-    private fun quickHull(points: Collection<Point>, first: Point, second: Point): Collection<Point> {
-        val pointsLeftOfLine = points
-            .filter { it.isLeftOfLine(first, second) }
-            .map { Pair(it, it.distanceToLine(first, second)) }
+    private fun quickHull(
+        points: Collection<Point>,
+        first: Point,
+        second: Point,
+    ): Collection<Point> {
+        val pointsLeftOfLine =
+            points
+                .filter { it.isLeftOfLine(first, second) }
+                .map { Pair(it, it.distanceToLine(first, second)) }
         return if (pointsLeftOfLine.isEmpty()) {
             listOf(second)
         } else {

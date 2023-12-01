@@ -43,7 +43,11 @@ fun main() {
         println()
     }
 
-    fun fold(axes: Char, index: Int, map: Array<IntArray>): Array<IntArray> {
+    fun fold(
+        axes: Char,
+        index: Int,
+        map: Array<IntArray>,
+    ): Array<IntArray> {
         lateinit var newMap: Array<IntArray>
         if (axes == 'y') {
             newMap = array2dOfInt(index, map[0].size)

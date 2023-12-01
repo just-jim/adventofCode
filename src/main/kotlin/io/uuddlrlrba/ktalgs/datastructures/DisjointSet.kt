@@ -34,7 +34,10 @@ class DisjointSet(val size: Int) {
         }
     }
 
-    public fun connected(v: Int, w: Int): Boolean {
+    public fun connected(
+        v: Int,
+        w: Int,
+    ): Boolean {
         return find(v) == find(w)
     }
 
@@ -47,7 +50,10 @@ class DisjointSet(val size: Int) {
         return v
     }
 
-    public fun union(v: Int, w: Int) {
+    public fun union(
+        v: Int,
+        w: Int,
+    ) {
         val rootV = find(v)
         val rootW = find(w)
         if (rootV == rootW) return

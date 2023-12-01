@@ -33,7 +33,7 @@ package io.uuddlrlrba.ktalgs.sorts
 @ComparisonSort
 @StableSort
 class BubbleSort : AbstractSortStrategy() {
-    public override fun<T : Comparable<T>> perform(arr: Array<T>) {
+    public override fun <T : Comparable<T>> perform(arr: Array<T>) {
         var exchanged: Boolean
         do {
             exchanged = false

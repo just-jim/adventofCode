@@ -23,7 +23,10 @@
 package io.uuddlrlrba.ktalgs.search
 
 class BinarySearch<T : Comparable<T>> : AbstractSearchStrategy<T>() {
-    override fun perform(arr: Array<T>, element: T): Int {
+    override fun perform(
+        arr: Array<T>,
+        element: T,
+    ): Int {
         var lo = 0
         var hi = arr.size - 1
         while (lo <= hi) {

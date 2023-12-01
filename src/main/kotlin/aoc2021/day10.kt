@@ -7,7 +7,17 @@ fun main() {
     val file = readFileAsStrings(if (test) "sample" else "aoc2021/day10")
 
     val start = listOf('<', '[', '{', '(')
-    val opposite: Map<Char, Char> = mapOf(Pair('>', '<'), Pair(']', '['), Pair('}', '{'), Pair(')', '('), Pair('<', '>'), Pair('[', ']'), Pair('{', '}'), Pair('(', ')'))
+    val opposite: Map<Char, Char> =
+        mapOf(
+            Pair('>', '<'),
+            Pair(']', '['),
+            Pair('}', '{'),
+            Pair(')', '('),
+            Pair('<', '>'),
+            Pair('[', ']'),
+            Pair('{', '}'),
+            Pair('(', ')'),
+        )
 
     val scores: Map<Char, Int> = mapOf(Pair('>', 25137), Pair(']', 57), Pair('}', 1197), Pair(')', 3))
     val scores2: Map<Char, Int> = mapOf(Pair('>', 4), Pair(']', 2), Pair('}', 3), Pair(')', 1))

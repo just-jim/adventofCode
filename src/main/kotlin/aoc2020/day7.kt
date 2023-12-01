@@ -6,7 +6,10 @@ fun main() {
     val data = readFileAsStrings("aoc2020/day7")
     val bags = mutableMapOf<String, Bag>()
 
-    fun registerBag(bagName: String, parent: Bag? = null) {
+    fun registerBag(
+        bagName: String,
+        parent: Bag? = null,
+    ) {
         if (!bags.containsKey(bagName)) {
             bags[bagName] = Bag(bagName)
         }
@@ -41,7 +44,7 @@ fun main() {
 class Bag(
     var name: String,
     var parents: MutableSet<Bag> = mutableSetOf(),
-    var children: MutableMap<Bag, Int> = mutableMapOf()
+    var children: MutableMap<Bag, Int> = mutableMapOf(),
 ) {
     fun countParents(listOfUniqueParents: MutableSet<Bag>): MutableSet<Bag> {
         parents.forEach {

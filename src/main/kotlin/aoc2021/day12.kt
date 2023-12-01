@@ -34,20 +34,25 @@ fun main() {
 
     file.forEach { line ->
         val nodeNames = line.split('-')
-        val node1 = nodes.getOrElse(nodeNames[0]) {
-            nodes[nodeNames[0]] = Node(nodeNames[0])
-            nodes[nodeNames[0]]!!
-        }
-        val node2 = nodes.getOrElse(nodeNames[1]) {
-            nodes[nodeNames[1]] = Node(nodeNames[1])
-            nodes[nodeNames[1]]!!
-        }
+        val node1 =
+            nodes.getOrElse(nodeNames[0]) {
+                nodes[nodeNames[0]] = Node(nodeNames[0])
+                nodes[nodeNames[0]]!!
+            }
+        val node2 =
+            nodes.getOrElse(nodeNames[1]) {
+                nodes[nodeNames[1]] = Node(nodeNames[1])
+                nodes[nodeNames[1]]!!
+            }
 
         node1.addNode(node2)
         node2.addNode(node1)
     }
 
-    fun findExit(node: Node, path: List<Node>): Int {
+    fun findExit(
+        node: Node,
+        path: List<Node>,
+    ): Int {
         if (node.isEnd) {
             // println((path+listOf(node)).joinToString(","))
             return 1

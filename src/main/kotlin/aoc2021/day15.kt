@@ -13,19 +13,32 @@ fun Array<IntArray>.nodes() = this.size * this[0].size
 
 // Check cord validity
 fun Int.inBounds(forMap: Array<IntArray>) = this in 0 until forMap.nodes()
+
 fun Int.validLeft(forMap: Array<IntArray>) = this.inBounds(forMap) && this % (forMap.size) != forMap.size - 1
+
 fun Int.validRight(forMap: Array<IntArray>) = this.inBounds(forMap) && this % forMap.size != 0
+
 fun Int.validUp(forMap: Array<IntArray>) = this.inBounds(forMap)
+
 fun Int.validDown(forMap: Array<IntArray>) = this.inBounds(forMap)
 
 // Get weight for a map given teh index of the node
 fun Int.weight(fromMap: Array<IntArray>) = fromMap[this.toPair(fromMap).first][this.toPair(fromMap).second]
 
 // Graph creation functions
-fun addEdge(from: Int, to: Int, weight: Int, forGraph: DWGraph) {
+fun addEdge(
+    from: Int,
+    to: Int,
+    weight: Int,
+    forGraph: DWGraph,
+) {
     forGraph.addEdge(from, to, weight.toDouble())
 }
-fun addEdges(fromMap: Array<IntArray>, forGraph: DWGraph) {
+
+fun addEdges(
+    fromMap: Array<IntArray>,
+    forGraph: DWGraph,
+) {
     for (i in 0 until fromMap.nodes()) {
         val left = i - 1
         val right = i + 1

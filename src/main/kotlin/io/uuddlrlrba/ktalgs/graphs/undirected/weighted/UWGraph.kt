@@ -41,7 +41,11 @@ class UWGraph(public override val V: Int) : Graph {
         }
     }
 
-    public fun addEdge(v: Int, w: Int, weight: Double) {
+    public fun addEdge(
+        v: Int,
+        w: Int,
+        weight: Double,
+    ) {
         val edge = Edge(v, w, weight)
         adj[v].add(edge)
         adj[w].add(edge)

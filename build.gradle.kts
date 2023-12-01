@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.7.21"
-    id("org.jmailen.kotlinter") version "3.12.0"
+    kotlin("jvm") version "1.9.21"
+    id("org.jmailen.kotlinter") version "4.1.0"
     application
 }
 
@@ -9,6 +9,6 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
     testImplementation("junit:junit:4.13.2")
 }

@@ -9,7 +9,10 @@ fun main() {
         var y: Int = 0
         var aim: Int = 0
 
-        fun navigate(command: String, value: Int) {
+        fun navigate(
+            command: String,
+            value: Int,
+        ) {
             when (command) {
                 "forward" -> x += value
                 "down" -> y += value
@@ -17,7 +20,10 @@ fun main() {
             }
         }
 
-        fun navigate2(command: String, value: Int) {
+        fun navigate2(
+            command: String,
+            value: Int,
+        ) {
             when (command) {
                 "forward" -> {
                     x += value
