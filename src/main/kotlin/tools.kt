@@ -28,5 +28,14 @@ fun print2dMap(map: Array<IntArray>) {
     }
 }
 
+fun List<String>.print() {
+    this.forEach { println(it) }
+    println()
+}
+
+fun MutableMap<String, Int>.print() {
+    this.forEach { println("${it.key} : ${it.value}") }
+}
+
 // Use URL (maybe it will come in handy)
 // val file = URL("https://adventofcode.com/2020/day/1/input").readText()
