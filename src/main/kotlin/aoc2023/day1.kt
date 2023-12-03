@@ -7,24 +7,28 @@ fun main() {
     val file = readFileAsStrings(if (test) "sample" else "aoc2023/day1")
 
     var sum = 0
-    /*
+
     file.forEach { line ->
-        val numericChars = line.replace("[^\\d.]".toRegex(),"")
+        val numericChars = line.filter { it.isDigit() }
         val firstNumericDigit = numericChars.first().toString()
         val lastNumericDigit = numericChars.last().toString()
-        sum += (firstNumericDigit+lastNumericDigit).toInt()
+        sum += (firstNumericDigit + lastNumericDigit).toInt()
     }
 
     val sol1 = sum
     println("Part 1: $sol1")
-*/
+
     sum = 0
     val digitWords =
         mapOf(
-            "twone" to "2ne",
-            "eightwo" to "8wo",
-            "eighthree" to "8hree",
-            "nineight" to "9ight",
+            "oneight" to "18",
+            "threeight" to "38",
+            "fiveight" to "58",
+            "sevenine" to "79",
+            "twone" to "21",
+            "eightwo" to "82",
+            "eighthree" to "83",
+            "nineight" to "98",
             "one" to "1",
             "two" to "2",
             "three" to "3",
@@ -36,20 +40,17 @@ fun main() {
             "nine" to "9",
         )
 
-
     file.forEach { line ->
         var correctLine = line
-        digitWords.keys.forEach { correctLine = correctLine.replace(it, digitWords[it]!!) }
-        val numericChars = correctLine.replace("[^\\d.]".toRegex(), "")
-        val numericChars2 = Regex("[\\d+]").findAll(correctLine)
-        val firstNumericDigit = numericChars2.first().value
-        val lastNumericDigit = numericChars2.last().value
+        digitWords.forEach {
+            correctLine = correctLine.replace(it.key, it.value)
+        }
+        val numericChars = correctLine.filter { it.isDigit() }
+        val firstNumericDigit = numericChars.first().toString()
+        val lastNumericDigit = numericChars.last().toString()
         val num = (firstNumericDigit + lastNumericDigit).toInt()
         sum += num
-        println(num)
-        //println("$correctLine -> $num")
     }
-    // tried: 53519
 
     val sol2 = sum
     println("Part 2: $sol2")
