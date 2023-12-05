@@ -1,7 +1,7 @@
 package aoc2022
 
 import array2dOfInt
-import print2dMap
+import print
 import readFileAsStrings
 
 fun main() {
@@ -17,8 +17,7 @@ fun main() {
         }
     }
 
-    print2dMap(map)
-    println()
+    map.print()
 
     fun checkIfVisible(
         x: Int,
