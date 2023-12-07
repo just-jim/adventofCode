@@ -14,6 +14,8 @@ fun main() {
     val sol1 = sum
     println("Part 1: $sol1")
 
-    val sol2 = 0
+    sum = 0
+
+    val sol2 = sum
     println("Part 2: $sol2")
 }
