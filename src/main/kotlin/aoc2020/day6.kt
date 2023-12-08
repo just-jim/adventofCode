@@ -4,8 +4,8 @@ import readFileAsStrings
 
 fun main() {
     val data = readFileAsStrings("aoc2020/day6")
-    var group: MutableSet<Char> = mutableSetOf()
-    var group2: MutableMap<Char, Int> = mutableMapOf()
+    var group = mutableSetOf<Char>()
+    var group2 = mutableMapOf<Char, Int> ()
     var count = 0
     var count2 = 0
     var groupMembers = 0

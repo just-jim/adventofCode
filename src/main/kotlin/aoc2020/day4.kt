@@ -4,8 +4,8 @@ import readFileAsStrings
 
 fun main() {
     val data = readFileAsStrings("aoc2020/day4")
-    val passports: MutableList<Passport> = mutableListOf()
-    val passports2: MutableList<Passport> = mutableListOf()
+    val passports = mutableListOf<Passport>()
+    val passports2 = mutableListOf<Passport>()
     var curPassport: Passport? = Passport()
     data.forEach { line ->
         if (line == "") {

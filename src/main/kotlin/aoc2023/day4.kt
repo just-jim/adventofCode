@@ -14,7 +14,7 @@ data class ScratchCard(
 fun main() {
     val file = readFileAsStrings(if (test) "sample" else "aoc2023/day4")
 
-    val scratchCards : MutableMap<Int,ScratchCard> = mutableMapOf()
+    val scratchCards = mutableMapOf<Int,ScratchCard>()
 
     var sum = 0
     file.forEach { line ->

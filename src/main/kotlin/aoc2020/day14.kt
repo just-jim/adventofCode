@@ -51,7 +51,7 @@ fun main() {
 
             // String(binary).toInt(2)
 
-            val memIndices: List<Int> = listOf()
+            val memIndices = listOf<Int>()
             memIndices.forEach {
                 dic[it] = value.toLong()
             }

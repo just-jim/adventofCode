@@ -57,7 +57,7 @@ fun main() {
         }
     }
 
-    val gears: MutableMap<Pair<Int, Int>, Gear> = mutableMapOf()
+    val gears = mutableMapOf<Pair<Int, Int>, Gear>()
 
     file.forEachIndexed { y, line ->
         val (numbers, indexes) = extractNumbersWithIndex(line)

@@ -13,7 +13,7 @@ class Dir() {
     var size: Int = 0
     var dirSize: Int? = null
     private var parent: Dir? = null
-    private val children: MutableMap<String, Dir> = mutableMapOf()
+    private val children = mutableMapOf<String, Dir>()
 
     constructor(name: String, size: Int) : this() {
         this.name = name

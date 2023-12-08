@@ -30,7 +30,7 @@ fun main() {
         }
     }
 
-    val nodes: MutableMap<String, Node> = mutableMapOf()
+    val nodes = mutableMapOf<String, Node>()
 
     file.forEach { line ->
         val nodeNames = line.split('-')
