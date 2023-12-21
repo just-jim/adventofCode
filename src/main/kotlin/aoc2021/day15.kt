@@ -1,29 +1,28 @@
 package aoc2021
 
-import array2dOfInt
+import tools.*
 import io.uuddlrlrba.ktalgs.graphs.directed.weighted.DWGraph
 import io.uuddlrlrba.ktalgs.graphs.directed.weighted.Dijkstra
-import readFileAsStrings
 
 // Get Pair matrix coordinates from index
-fun Int.toPair(forMap: Array<IntArray>) = Pair(this % forMap.size, this / forMap.size)
+fun Int.toPair(forMap: Matrix2d<Int>) = Pair(this % forMap.cols, this / forMap.cols)
 
 // Get amount of nodes from matrix
-fun Array<IntArray>.nodes() = this.size * this[0].size
+fun Matrix2d<Int>.nodes() = this.cols * this.rows
 
 // Check cord validity
-fun Int.inBounds(forMap: Array<IntArray>) = this in 0 until forMap.nodes()
+fun Int.inBounds(forMap: Matrix2d<Int>) = this in 0 until forMap.nodes()
 
-fun Int.validLeft(forMap: Array<IntArray>) = this.inBounds(forMap) && this % (forMap.size) != forMap.size - 1
+fun Int.validLeft(forMap: Matrix2d<Int>) = this.inBounds(forMap) && this % (forMap.cols) != forMap.cols - 1
 
-fun Int.validRight(forMap: Array<IntArray>) = this.inBounds(forMap) && this % forMap.size != 0
+fun Int.validRight(forMap: Matrix2d<Int>) = this.inBounds(forMap) && this % forMap.cols != 0
 
-fun Int.validUp(forMap: Array<IntArray>) = this.inBounds(forMap)
+fun Int.validUp(forMap: Matrix2d<Int>) = this.inBounds(forMap)
 
-fun Int.validDown(forMap: Array<IntArray>) = this.inBounds(forMap)
+fun Int.validDown(forMap: Matrix2d<Int>) = this.inBounds(forMap)
 
 // Get weight for a map given teh index of the node
-fun Int.weight(fromMap: Array<IntArray>) = fromMap[this.toPair(fromMap).first][this.toPair(fromMap).second]
+fun Int.weight(fromMap: Matrix2d<Int>) = fromMap[this.toPair(fromMap).first,this.toPair(fromMap).second]
 
 // Graph creation functions
 fun addEdge(
@@ -36,14 +35,14 @@ fun addEdge(
 }
 
 fun addEdges(
-    fromMap: Array<IntArray>,
+    fromMap: Matrix2d<Int>,
     forGraph: DWGraph,
 ) {
     for (i in 0 until fromMap.nodes()) {
         val left = i - 1
         val right = i + 1
-        val up = i - fromMap.size
-        val down = i + fromMap.size
+        val up = i - fromMap.cols
+        val down = i + fromMap.cols
 
         if (left.validLeft(fromMap)) addEdge(i, left, left.weight(fromMap), forGraph)
         if (right.validRight(fromMap)) addEdge(i, right, right.weight(fromMap), forGraph)
@@ -64,13 +63,13 @@ fun Int.shiftN(n: Int): Int {
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2021/day15")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2021/day15")
 
     // Create the map
-    val map = array2dOfInt(file[0].length, file.size)
+    val map = Matrix2d<Int>(file[0].length, file.size)
     file.forEachIndexed { y, line ->
         line.forEachIndexed { x, tile ->
-            map[x][y] = tile.toString().toInt()
+            map[x,y] = tile.toString().toInt()
         }
     }
 
@@ -83,13 +82,13 @@ fun main() {
     println("Part 1: $sol1")
 
     // Create second map
-    val map2 = array2dOfInt(file[0].length * 5, file.size * 5)
+    val map2 = Matrix2d<Int>(file[0].length * 5, file.size * 5)
     for (y2 in 0 until 5) {
         for (x2 in 0 until 5) {
             file.forEachIndexed { y, line ->
                 line.forEachIndexed { x, tile ->
                     val risk = tile.toString().toInt()
-                    map2[(x2 * file.size) + x][(y2 * file.size) + y] = risk.shiftN(x2 + y2)
+                    map2[(x2 * file.size) + x,(y2 * file.size) + y] = risk.shiftN(x2 + y2)
                 }
             }
         }

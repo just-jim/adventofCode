@@ -1,6 +1,6 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 
 enum class Type {
     File,
@@ -84,7 +84,7 @@ class Dir() {
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day7")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day7")
 
     val root = Dir("/", 0)
     var curDir: Dir = root

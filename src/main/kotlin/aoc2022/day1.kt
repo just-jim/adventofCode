@@ -1,10 +1,10 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day1")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day1")
 
     val calories =
         file

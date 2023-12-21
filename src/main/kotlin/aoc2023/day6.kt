@@ -1,6 +1,6 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.sqrt
@@ -20,7 +20,7 @@ fun durationToMaxButtonTime(raceTime:Long, duration: Long):Double{
 }
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day6")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day6")
 
     val raceTimes = Regex("\\d+").findAll(file.first()).map { it.value.toInt() }.toList()
     val highScores = Regex("\\d+").findAll(file.last()).map { it.value.toInt() }.toList()

@@ -1,10 +1,10 @@
 package aoc2021
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2021/day3")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2021/day3")
     val num = IntArray(file[0].length) { 0 }
     val num2 = IntArray(file[0].length) { 0 }
     file.forEach { line ->

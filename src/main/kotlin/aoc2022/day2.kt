@@ -6,7 +6,7 @@ import aoc2022.BattleOutcome.Win
 import aoc2022.RPS.Paper
 import aoc2022.RPS.Rock
 import aoc2022.RPS.Scissors
-import readFileAsStrings
+import tools.*
 
 enum class RPS(val score: Int) {
     Rock(1),
@@ -22,7 +22,7 @@ enum class BattleOutcome(val score: Int) {
 
 fun main() {
     val test = true
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day2")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day2")
 
     fun String.toRPS(): RPS =
         when (this) {

@@ -1,11 +1,11 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.ceil
 
 fun main() {
-    var seats = "0".repeat(128 * 8).toCharArray()
-    val data = readFileAsStrings("aoc2020/day5")
+    val seats = "0".repeat(128 * 8).toCharArray()
+    val data = readFileAs<String>("aoc2020/day5")
     var max = 0
     data.forEach { line ->
         var yF = 0

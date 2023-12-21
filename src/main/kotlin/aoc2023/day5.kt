@@ -1,6 +1,6 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.min
 
 private const val test = false
@@ -11,7 +11,7 @@ data class Translator(
 )
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day5")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day5")
 
     val seeds = file.first().split(':').last().trim().split(' ').map { it.toLong() }
 

@@ -1,6 +1,6 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.absoluteValue
 
 fun main() {
@@ -99,7 +99,7 @@ fun main() {
 
     val boat = Boat()
 
-    val cords = readFileAsStrings("aoc2020/day12")
+    val cords = readFileAs<String>("aoc2020/day12")
     cords.forEach { line ->
         val command = line.take(1)
         val value = line.substring(1).toInt()

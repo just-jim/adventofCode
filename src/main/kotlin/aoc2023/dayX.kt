@@ -1,11 +1,11 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 
 private const val test = true
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/dayX")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/dayX")
 
     var sum = 0
     file.forEach { line ->

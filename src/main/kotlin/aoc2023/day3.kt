@@ -1,9 +1,6 @@
 package aoc2023
 
-import array2dOfChar
-import readFileAsStrings
-import x
-import y
+import tools.*
 
 private const val test = false
 
@@ -12,12 +9,12 @@ data class Gear(
     var sum: Int,
 )
 
-fun Array<CharArray>.checkIfPartNumberIsValid(y: Int, x: Int, length: Int, num: Int, gears: MutableMap<Pair<Int, Int>, Gear>): Boolean {
+fun Matrix2d<Char>.checkIfPartNumberIsValid(y: Int, x: Int, length: Int, num: Int, gears: MutableMap<Pair<Int, Int>, Gear>): Boolean {
     var flag = false
     (y - 1..y + 1).forEach { yy ->
-        if (yy.validIndex(this.y())) {
+        if (yy.validIndex(this.rows)) {
             (x - 1..x + length).forEach { xx ->
-                if (xx.validIndex(this.x()) && this[xx][yy].isSymbol()) {
+                if (xx.validIndex(this.cols) && this[xx,yy].isSymbol()) {
                     gears.getOrPut(Pair(xx, yy)) {
                         Gear(0, 1)
                     }.let {
@@ -46,14 +43,14 @@ fun extractNumbersWithIndex(input: String): Pair<List<Int>, List<Int>> {
 }
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day3")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day3")
 
-    val schematic = array2dOfChar(file[0].length, file.size)
+    val schematic = Matrix2d<Char>(file[0].length, file.size)
     var sum = 0
 
-    file.forEachIndexed { i, line ->
-        line.forEachIndexed { i2, char ->
-            schematic[i2][i] = char
+    file.forEachIndexed { y, line ->
+        line.forEachIndexed { x, char ->
+            schematic[x,y] = char
         }
     }
 

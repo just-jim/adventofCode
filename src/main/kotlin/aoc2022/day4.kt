@@ -1,10 +1,10 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val test = true
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day4")
+    val test = false
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day4")
 
     fun Pair<Int, Int>.containedIn(otherPair: Pair<Int, Int>): Boolean =
         (this.first >= otherPair.first) and (this.second <= otherPair.second)

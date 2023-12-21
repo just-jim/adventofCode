@@ -1,7 +1,6 @@
 package aoc2020
 
-import array2dOfChar
-import readFileAsStrings
+import tools.*
 
 fun main() {
     data class Chair(
@@ -91,14 +90,13 @@ fun main() {
     }
 
     data class Chairs(
-        var map: Array<CharArray>,
-        var dimensions: Pair<Int, Int>,
+        var map: Matrix2d<Char>,
         val dic: MutableMap<Pair<Int, Int>, Chair> = mutableMapOf(),
     ) {
         override fun toString(): String {
             var text = ""
-            for (i in 0 until dimensions.first) {
-                for (i2 in 0 until dimensions.second) {
+            for (i in 0 until map.rows) {
+                for (i2 in 0 until map.cols) {
                     text += dic[Pair(i2, i)]?.status.toString()
                 }
                 text += "\n"
@@ -113,13 +111,13 @@ fun main() {
         fun populateChairs(mapFile: MutableList<String>) {
             mapFile.forEachIndexed { i, line ->
                 line.forEachIndexed { i2, tile ->
-                    map[i2][i] = tile
-                    dic[Pair(i2, i)] = Chair(map[i2][i], Pair(i2, i))
+                    map[i2,i] = tile
+                    dic[Pair(i2, i)] = Chair(map[i2,i], Pair(i2, i))
                 }
             }
 
-            for (i in 0 until dimensions.first) {
-                for (i2 in 0 until dimensions.second) {
+            for (i in 0 until map.rows) {
+                for (i2 in 0 until map.cols) {
                     // up
                     dic[Pair(i2, i)]?.u = dic.get(Pair(i2, i - 1))
                     // up left
@@ -142,14 +140,14 @@ fun main() {
 
         fun nextGen(extended: Boolean): Int {
             var count = 0
-            for (i in 0 until dimensions.first) {
-                for (i2 in 0 until dimensions.second) {
+            for (i in 0 until map.rows) {
+                for (i2 in 0 until map.cols) {
                     dic[Pair(i2, i)]?.calculateNextGen(extended)
                     dic[Pair(i2, i)]?.unChanged()?.let { if (!it) count++ }
                 }
             }
-            for (i in 0 until dimensions.first) {
-                for (i2 in 0 until dimensions.second) {
+            for (i in 0 until map.rows) {
+                for (i2 in 0 until map.cols) {
                     dic[Pair(i2, i)]?.nextGen()
                 }
             }
@@ -157,9 +155,9 @@ fun main() {
         }
 
         fun occupiedSeats(): Int {
-            var count: Int = 0
-            for (i in 0 until dimensions.first) {
-                for (i2 in 0 until dimensions.second) {
+            var count = 0
+            for (i in 0 until map.rows) {
+                for (i2 in 0 until map.cols) {
                     if (dic[Pair(i2, i)]?.status == '#') {
                         count++
                     }
@@ -170,8 +168,9 @@ fun main() {
     }
 
     // Create the map
-    val mapFile = readFileAsStrings("aoc2020/day11")
-    val chairs = Chairs(array2dOfChar(mapFile[0].length, mapFile.size), Pair(mapFile.size, mapFile[0].length))
+    val mapFile = readFileAs<String>("aoc2020/day11")
+    val map = Matrix2d<Char>(mapFile[0].length, mapFile.size)
+    val chairs = Chairs(map)
     chairs.populateChairs(mapFile)
 
     var changes = 1
@@ -183,7 +182,7 @@ fun main() {
 
     println("Part1: ${chairs.occupiedSeats()}")
 
-    val chairs2 = Chairs(array2dOfChar(mapFile[0].length, mapFile.size), Pair(mapFile.size, mapFile[0].length))
+    val chairs2 = Chairs(map)
     chairs2.populateChairs(mapFile)
 
     changes = 1

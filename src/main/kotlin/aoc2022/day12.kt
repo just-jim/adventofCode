@@ -1,35 +1,34 @@
 package aoc2022
 
-import array2dOfInt
+import tools.*
 import io.uuddlrlrba.ktalgs.graphs.directed.weighted.DWGraph
 import io.uuddlrlrba.ktalgs.graphs.directed.weighted.Dijkstra
-import readFileAsStrings
 
 // Get Pair matrix coordinates from index
-fun Int.toPair(forMap: Array<IntArray>) = Pair(this % forMap.size, this / forMap.size)
+fun Int.toPair(forMap: Matrix2d<Int>) = Pair(this % forMap.cols, this / forMap.cols)
 
-fun Pair<Int, Int>.toIndex(forMap: Array<IntArray>) = this.second * forMap.size + this.first
+fun Pair<Int, Int>.toIndex(forMap: Matrix2d<Int>) = this.second * forMap.cols + this.first
 
 // Get amount of nodes from matrix
-fun Array<IntArray>.nodes() = this.size * this[0].size
+fun Matrix2d<Int>.nodes() = this.cols * this.rows
 
 // Check cord validity
-fun Int.inBounds(forMap: Array<IntArray>) = this in 0 until forMap.nodes()
+fun Int.inBounds(forMap: Matrix2d<Int>) = this in 0 until forMap.nodes()
 
-fun Int.validLeft(forMap: Array<IntArray>) = this.inBounds(forMap) && this % (forMap.size) != forMap.size - 1
+fun Int.validLeft(forMap: Matrix2d<Int>) = this.inBounds(forMap) && this % (forMap.cols) != forMap.cols - 1
 
-fun Int.validRight(forMap: Array<IntArray>) = this.inBounds(forMap) && this % forMap.size != 0
+fun Int.validRight(forMap: Matrix2d<Int>) = this.inBounds(forMap) && this % forMap.cols != 0
 
-fun Int.validUp(forMap: Array<IntArray>) = this.inBounds(forMap)
+fun Int.validUp(forMap: Matrix2d<Int>) = this.inBounds(forMap)
 
-fun Int.validDown(forMap: Array<IntArray>) = this.inBounds(forMap)
+fun Int.validDown(forMap: Matrix2d<Int>) = this.inBounds(forMap)
 
 fun Int.canGo(
-    forMap: Array<IntArray>,
+    forMap: Matrix2d<Int>,
     current: Int,
 ): Boolean {
-    val targetHeight = forMap[this.toPair(forMap).first][this.toPair(forMap).second]
-    val currentHeight = forMap[current.toPair(forMap).first][current.toPair(forMap).second]
+    val targetHeight = forMap[this.toPair(forMap).first,this.toPair(forMap).second]
+    val currentHeight = forMap[current.toPair(forMap).first,current.toPair(forMap).second]
     return targetHeight <= currentHeight + 1
 }
 
@@ -44,14 +43,14 @@ fun addEdge(
 }
 
 fun addEdges(
-    fromMap: Array<IntArray>,
+    fromMap: Matrix2d<Int>,
     forGraph: DWGraph,
 ) {
     for (i in 0 until fromMap.nodes()) {
         val left = i - 1
         val right = i + 1
-        val up = i - fromMap.size
-        val down = i + fromMap.size
+        val up = i - fromMap.cols
+        val down = i + fromMap.cols
 
         if (left.validLeft(fromMap) && left.canGo(fromMap, i)) addEdge(i, left, 1, forGraph)
         if (right.validRight(fromMap) && right.canGo(fromMap, i)) addEdge(i, right, 1, forGraph)
@@ -62,16 +61,16 @@ fun addEdges(
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day12")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day12")
 
     // Create the map
     var start: Pair<Int, Int> = Pair(0, 0)
     var target: Pair<Int, Int> = Pair(0, 0)
     val starts: MutableList<Pair<Int, Int>> = mutableListOf()
-    val map = array2dOfInt(file[0].length, file.size)
+    val map = Matrix2d<Int>(file[0].length, file.size)
     file.forEachIndexed { y, line ->
         line.forEachIndexed { x, tile ->
-            map[x][y] =
+            map[x,y] =
                 when (tile) {
                     'S' -> {
                         start = Pair(x, y)

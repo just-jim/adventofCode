@@ -1,10 +1,10 @@
 package aoc2021
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2021/day12")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2021/day12")
 
     class Node() {
         lateinit var name: String

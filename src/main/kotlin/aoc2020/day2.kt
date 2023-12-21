@@ -1,9 +1,9 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val passwords = readFileAsStrings("aoc2020/day2")
+    val passwords = readFileAs<String>("aoc2020/day2")
     var valid1 = 0
     var valid2 = 0
     passwords.forEach { line ->

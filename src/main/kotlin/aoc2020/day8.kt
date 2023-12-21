@@ -1,17 +1,17 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val data = readFileAsStrings("aoc2020/day8")
+    val data = readFileAs<String>("aoc2020/day8")
     val code = mutableListOf<String>()
     val visited = mutableListOf<Int>()
 
     data.forEach { code.add(it) }
 
     val codeLength = code.size
-    var i: Int = 0
-    var x: Int = 0
+    var i = 0
+    var x = 0
 
     while (!visited.contains(i)) {
         visited.add(i)

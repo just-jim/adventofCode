@@ -1,12 +1,12 @@
 package aoc2021
 
-import readFileAsStrings
+import tools.*
 import java.util.Collections.max
 import kotlin.math.abs
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2021/day7")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2021/day7")
     val crabs = file[0].split(',').map { it.toInt() }
 
     fun triangular(x: Int): Int {

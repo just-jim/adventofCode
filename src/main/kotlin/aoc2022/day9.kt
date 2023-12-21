@@ -1,6 +1,6 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.abs
 
 class Rope() {
@@ -73,7 +73,7 @@ class Knot() {
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day9")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day9")
 
     val rope = Rope(10) // Part 1: n=2 , Part 2: n=10
 

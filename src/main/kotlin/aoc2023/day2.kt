@@ -1,10 +1,10 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day2")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day2")
 
     val limitations = mapOf("red" to 12, "green" to 13, "blue" to 14)
 

@@ -1,15 +1,14 @@
 package aoc2020
 
-import array2dOfInt
-import readFileAsStrings
+import tools.*
 
 fun main() {
     // Create the map
-    val mapFile = readFileAsStrings("aoc2020/day3")
-    val map = array2dOfInt(mapFile[0].length, mapFile.size)
+    val mapFile = readFileAs<String>("aoc2020/day3")
+    val map = Matrix2d<Int>(mapFile[0].length, mapFile.size)
     mapFile.forEachIndexed { i, line ->
         line.forEachIndexed { i2, tile ->
-            map[i2][i] = if (tile == '.') 0 else 1
+            map[i2,i] = if (tile == '.') 0 else 1
         }
     }
 
@@ -18,10 +17,10 @@ fun main() {
     val stepY = 1
     var x = 0
     var trees = 0
-    for (y in stepY until map[0].size step stepY) {
-        if (y <= map[0].size) {
+    for (y in stepY until map.rows step stepY) {
+        if (y <= map.rows) {
             x += stepX
-            if (map[x % map.size][y] == 1) {
+            if (map[x % map.cols,y] == 1) {
                 trees++
             }
         }
@@ -40,10 +39,10 @@ fun main() {
     stepList.forEach { steps ->
         trees = 0
         x = 0
-        for (y in steps.second until map[0].size step steps.second) {
-            if (y <= map[0].size) {
+        for (y in steps.second until map.rows step steps.second) {
+            if (y <= map.rows) {
                 x += steps.first
-                if (map[x % map.size][y] == 1) {
+                if (map[x % map.cols,y] == 1) {
                     trees++
                 }
             }

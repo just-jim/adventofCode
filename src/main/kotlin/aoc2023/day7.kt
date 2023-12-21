@@ -1,6 +1,6 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 
 enum class Poker(val score: Int) {
     HighCard(0),
@@ -100,7 +100,7 @@ data class Hand(
 private const val test = false
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day7")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day7")
 
     var sum = 0.0
     val hands = file.map { line ->

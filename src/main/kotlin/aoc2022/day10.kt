@@ -1,11 +1,11 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.abs
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day10")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day10")
 
     val commandTime: Map<String, Int> = mapOf(Pair("addx", 2), Pair("noop", 1))
     var x = 1

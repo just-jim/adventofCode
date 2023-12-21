@@ -1,11 +1,11 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 import kotlin.collections.ArrayDeque
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day5")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day5")
 
     val numOfStacks = if (test) 3 else 9
     val stacks: MutableList<ArrayDeque<String>> = mutableListOf()

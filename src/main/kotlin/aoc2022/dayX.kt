@@ -1,10 +1,11 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
+
+private const val test = true
 
 fun main() {
-    val test = true
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/dayX")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/dayX")
 
     var sum = 0
     file.forEach { line ->
@@ -13,6 +14,8 @@ fun main() {
     val sol1 = sum
     println("Part 1: $sol1")
 
-    val sol2 = 0
+    sum = 0
+
+    val sol2 = sum
     println("Part 2: $sol2")
 }

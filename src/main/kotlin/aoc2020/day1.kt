@@ -1,9 +1,9 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val expenses = readFileAsStrings("aoc2020/day1")
+    val expenses = readFileAs<String>("aoc2020/day1")
     expenses.forEach { a ->
         expenses.forEach { b ->
             expenses.forEach { c ->

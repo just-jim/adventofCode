@@ -1,9 +1,9 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val data = readFileAsStrings("aoc2020/day7")
+    val data = readFileAs<String>("aoc2020/day7")
     val bags = mutableMapOf<String, Bag>()
 
     fun registerBag(

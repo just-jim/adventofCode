@@ -1,9 +1,9 @@
 package aoc2020
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
-    val file = readFileAsStrings("aoc2020/day13")
+    val file = readFileAs<String>("aoc2020/day13")
     val time = file[0].toInt()
     val times = mutableMapOf<Int, Int>()
     val map = mutableMapOf<Int, Int>()

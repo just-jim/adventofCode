@@ -1,11 +1,11 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 
-private const val test = true
+private const val test = false
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day8")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day8")
 
     val instructions = file.first()
 

@@ -1,10 +1,10 @@
 package aoc2020
 
-import readFileAsLong
+import tools.*
 
 fun main() {
     val preambleSize = 25
-    val data = readFileAsLong("aoc2020/day9")
+    val data = readFileAs<Long>("aoc2020/day9")
     val preamble = mutableListOf<Long>()
 
     var solution1 = 0L

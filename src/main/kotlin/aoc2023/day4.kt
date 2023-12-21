@@ -1,6 +1,6 @@
 package aoc2023
 
-import readFileAsStrings
+import tools.*
 import kotlin.math.pow
 
 private const val test = false
@@ -12,7 +12,7 @@ data class ScratchCard(
 )
 
 fun main() {
-    val file = readFileAsStrings(if (test) "sample" else "aoc2023/day4")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2023/day4")
 
     val scratchCards = mutableMapOf<Int,ScratchCard>()
 

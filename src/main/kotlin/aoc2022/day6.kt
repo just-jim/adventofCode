@@ -1,10 +1,10 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day6")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day6")
     val signal = file.first()
 
     fun String.detectMarker(bufferLength: Int): Int? {

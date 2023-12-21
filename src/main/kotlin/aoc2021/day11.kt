@@ -1,17 +1,16 @@
 package aoc2021
 
-import array2dOfInt
-import readFileAsStrings
+import tools.*
 
 fun main() {
     val test = false
-    val file = readFileAsStrings(if (test) "sample" else "aoc2021/day11")
+    val file = readFileAs<String>(if (test) "sample" else "aoc2021/day11")
 
     val l = 10
-    val map = array2dOfInt(l, l)
+    val map = Matrix2d<Int>(l, l)
     file.forEachIndexed { y, line ->
         line.forEachIndexed { x, point ->
-            map[y][x] = point.toString().toInt()
+            map[x,y] = point.toString().toInt()
         }
     }
 
@@ -20,9 +19,9 @@ fun main() {
         y: Int,
     ) {
         if (x in 0 until l && y in 0 until l) {
-            if (map[x][y] < 10) {
-                map[x][y]++
-                if (map[x][y] == 10) {
+            if (map[x,y] < 10) {
+                map[x,y]++
+                if (map[x,y] == 10) {
                     plusOne(x - 1, y - 1)
                     plusOne(x, y - 1)
                     plusOne(x + 1, y - 1)
@@ -40,8 +39,8 @@ fun main() {
         var flashes = 0
         for (y in 0 until l) {
             for (x in 0 until l) {
-                if (map[x][y] == 10) {
-                    map[x][y] = 0
+                if (map[x,y] == 10) {
+                    map[x,y] = 0
                     flashes++
                 }
             }
@@ -60,10 +59,10 @@ fun main() {
     fun printMap() {
         for (y in 0 until l) {
             for (x in 0 until l) {
-                if (map[y][x] == 0) {
+                if (map[x,y] == 0) {
                     print('.')
                 } else {
-                    print(map[y][x])
+                    print(map[x,y])
                 }
                 print(' ')
             }

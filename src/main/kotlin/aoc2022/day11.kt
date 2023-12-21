@@ -1,6 +1,6 @@
 package aoc2022
 
-import readFileAsStrings
+import tools.*
 
 data class Item(
     var worry: Long,
@@ -90,8 +90,8 @@ class Monkey(
 }
 
 fun main() {
-    val test = true
-    val file = readFileAsStrings(if (test) "sample" else "aoc2022/day11")
+    val test = false
+    val file = readFileAs<String>(if (test) "sample" else "aoc2022/day11")
 
     var sum = 0
 
