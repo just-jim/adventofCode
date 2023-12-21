@@ -20,10 +20,13 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
         return get(Cords(x,y))
     }
 
+    operator fun get(x: Long, y: Long): T {
+        return get(Cords(x,y))
+    }
 
     operator fun get(cords: Cords): T {
         return if(cords.inBounds()) {
-            map[cords.x][cords.y] as T
+            map[cords.x.toInt()][cords.y.toInt()] as T
         } else {
             throw IndexOutOfBoundsException("Cannot get $cords. Out of bounds.")
         }
@@ -51,7 +54,7 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
 
     operator fun set(cords: Cords, value: T){
         return if(cords.inBounds()) {
-            map[cords.x][cords.y] = value
+            map[cords.x.toInt()][cords.y.toInt()] = value
         } else {
             throw IndexOutOfBoundsException("Cannot set $cords. Out of bounds.")
         }
@@ -104,7 +107,6 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
     fun xRange() = (0 until cols)
     fun yRange() = (0 until rows)
 
-
     // Doesn't work as expected, need to implement deep clone
     fun clone() = Matrix2d<T>(cols, rows).also{ newMatrix ->
         for (y in (0 until rows)) {
@@ -113,4 +115,7 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
             }
         }
     }
+
+    fun row(y: Int) = (0 until cols).map { this[it, y]!! as T }
+    fun col(x: Int) = (0 until rows).map { this[x, it]!! as T }
 }
