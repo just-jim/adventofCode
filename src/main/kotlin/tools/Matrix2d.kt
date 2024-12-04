@@ -118,4 +118,7 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
 
     fun row(y: Int) = (0 until cols).map { this[it, y]!! as T }
     fun col(x: Int) = (0 until rows).map { this[x, it]!! as T }
+
+    fun rows() = (0 until rows).map { row(it) }
+    fun cols() = (0 until cols).map { col(it) }
 }
