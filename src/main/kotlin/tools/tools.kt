@@ -16,12 +16,12 @@ inline fun <reified T> readFileAs(fileName: String): MutableList<T> =
         }.toMutableList()
     }
 
-fun List<String>.print() {
+fun <T> List<T>.print() {
     this.forEach { println(it) }
     println()
 }
 
-fun MutableMap<String, Int>.print() {
+fun <K, V> MutableMap<K, V>.print() {
     this.forEach { println("${it.key} : ${it.value}") }
 }
 
