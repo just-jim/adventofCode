@@ -121,4 +121,32 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
 
     fun rows() = (0 until rows).map { row(it) }
     fun cols() = (0 until cols).map { col(it) }
+
+    fun diagonal(x: Int, y: Int): List<T> {
+        val diagonal = mutableListOf<T>()
+        var x1 = x
+        var y1 = y
+        while (x1 < cols && y1 < rows) {
+            diagonal.add(this[x1, y1]!!)
+            x1++
+            y1++
+        }
+        return diagonal
+    }
+
+    fun diagonals() = (0 until cols).map { diagonal(it, 0) } + (1 until rows).map { diagonal(0, it) }
+
+    fun antiDiagonal(x: Int, y: Int): List<T> {
+        val diagonal = mutableListOf<T>()
+        var x1 = x
+        var y1 = y
+        while (x1 >= 0 && y1 < rows) {
+            diagonal.add(this[x1, y1]!!)
+            x1--
+            y1++
+        }
+        return diagonal
+    }
+
+    fun antiDiagonals() = (0 until cols).map { antiDiagonal(it, 0) } + (1 until rows).map { antiDiagonal(cols-1, it) }
 }
