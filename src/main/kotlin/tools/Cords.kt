@@ -18,4 +18,6 @@ data class Cords(var x: Long, var y: Long) {
     }
 
     override fun toString(): String = "[${x.toInt()}, ${y.toInt()}]"
+
+    fun clone() = Cords(x, y)
 }

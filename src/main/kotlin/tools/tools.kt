@@ -47,5 +47,12 @@ inline fun <reified T>MutableList<String>.toMatrix(): Matrix2d<T> {
     return matrix
 }
 
+enum class Direction(val symbol: String) {
+    RIGHT(">"),
+    DOWN("v"),
+    LEFT("<"),
+    UP("^");
+}
+
 // Use URL (maybe it will come in handy)
 // val file = URL("https://adventofcode.com/2020/day/1/input").readText()
