@@ -47,6 +47,22 @@ inline fun <reified T>MutableList<String>.toMatrix(): Matrix2d<T> {
     return matrix
 }
 
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T>MutableList<String>.toTileMatrix(): Matrix2d<Tile<T>> {
+    val matrix = Matrix2d<Tile<T>>(this[0].length, this.size)
+    for (y in this.indices) {
+        for (x in (0 until this[0].length)) {
+            matrix[x,y] = when(T::class){
+                Int::class -> Tile(Cords(x,y), this[y][x].toString().toInt(), matrix as Matrix2d<Tile<Int>>)
+                Long::class ->  Tile(Cords(x,y), this[y][x].toString().toLong(), matrix as Matrix2d<Tile<Long>>)
+                Char::class ->  Tile(Cords(x,y), this[y][x], matrix as Matrix2d<Tile<Char>>)
+                else -> throw Exception("Cannot convert file to Tile Matrix of ${T::class.simpleName}")
+            } as Tile<T>
+        }
+    }
+    return matrix
+}
+
 enum class Direction(val symbol: String) {
     RIGHT(">"),
     DOWN("v"),
