@@ -44,6 +44,14 @@ class DWGraph(public override val V: Int) : Graph {
         E++
     }
 
+    public fun addEdge(
+        from: Int,
+        to: Int,
+        weight: Int,
+    ) {
+        addEdge(from, to, weight.toDouble())
+    }
+
     public fun edges(): Collection<Edge> {
         val stack = Stack<Edge>()
         adj.flatMap { it }.forEach { stack.push(it) }

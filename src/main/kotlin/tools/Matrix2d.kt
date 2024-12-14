@@ -80,7 +80,7 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
         }
     }
 
-    fun foreachIndexed(action: (Cords, T) -> Unit) {
+    fun forEachIndexed(action: (Cords, T) -> Unit) {
         for (y in (0 until rows)) {
             for (x in (0 until cols)) {
                 action(Cords(x,y), this[x, y]!!)
@@ -121,6 +121,8 @@ class Matrix2d<T>(var cols: Int, var rows: Int) {
 
     fun rows() = (0 until rows).map { row(it) }
     fun cols() = (0 until cols).map { col(it) }
+
+    fun numberOfTiles() = cols * rows
 
     fun diagonal(x: Int, y: Int): List<T> {
         val diagonal = mutableListOf<T>()

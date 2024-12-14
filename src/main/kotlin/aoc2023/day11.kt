@@ -39,7 +39,7 @@ fun main() {
     fun calculateSumOfDistances(originalMultiplier: Int): Long {
         val multiplier = originalMultiplier - 1
         val galaxies = mutableListOf<Galaxy>()
-        map.foreachIndexed { cords, it ->
+        map.forEachIndexed { cords, it ->
             if (it == '#') galaxies.add(Galaxy(cords))
         }
 
