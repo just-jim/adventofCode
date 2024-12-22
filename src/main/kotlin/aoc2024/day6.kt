@@ -1,15 +1,11 @@
 package aoc2024
 
 import tools.*
-import kotlin.math.min
-import kotlinx.coroutines.*
-import java.util.*
 
 private const val test = false
 
 fun main() {
-    val file = readFileAs<String>(if (test) "sample" else "aoc2024/day6")
-    val map = Matrix2d<Int>(file[0].length, file.size)
+    val file = readFileAs<String>(if (test) "sample" else "aoc2024/day6e")
 
     class Step(var cords: Cords, var direction: Direction){
         override fun toString() : String{
@@ -28,58 +24,39 @@ fun main() {
         }
     }
 
-    fun Direction.rotateLeft(): Direction {
-        return Direction.entries[(this.ordinal - 1 + Direction.entries.size) % Direction.entries.size]
-    }
-
     fun Direction.rotateRight(): Direction {
         return Direction.entries[(this.ordinal + 1) % Direction.entries.size]
     }
 
-    class Guard(initialCords: Cords,var direction: Direction = Direction.UP) {
-        var loopFlag = true;
+    class Guard(initialCords: Cords, var map : Matrix2d<Int> , var direction: Direction = Direction.UP) {
         var cords = initialCords.clone()
-        var path = mutableListOf(Step(cords.clone(),direction))
+        var path = mutableListOf<Step>()
         var possibleLoopsCords = mutableListOf<Cords>()
 
-        fun set( newPath: MutableList<Step>, newDirection : Direction){
-            path = newPath
-            direction = newDirection
-            loopFlag = false
+        fun canMove() : Boolean {
+            return cordsAhead().x in 0 until map.cols && cordsAhead().y in 0 until map.rows
         }
 
-        fun move(value: Int = 1) : Boolean {
-            when (direction) {
-                Direction.RIGHT -> cords.x += value
-                Direction.DOWN -> cords.y += value
-                Direction.LEFT -> cords.x -= value
-                Direction.UP -> cords.y -= value
+        fun blockAhead() : Boolean {
+            return map[cordsAhead()] == 1
+        }
+
+        fun move() {
+            if(blockAhead()){
+                turn()
+                return
             }
-            val beenHere = beenHereBefore()
-            path.add(Step(cords.clone(), direction))
-            return beenHere
+            path.add(Step(cords, direction))
+            cords = cordsAhead()
         }
 
-        fun turn(command: String = "R") : Boolean {
-
-            direction = calculateTurnOrientation(command)
-            val beenHere = beenHereBefore()
-            path.add(Step(cords.clone(), direction))
-            return beenHere
+        fun turn() {
+            path.add(Step(cords, direction))
+            direction = direction.rotateRight()
         }
 
         fun beenHereBefore() : Boolean {
             return path.contains(Step(cords, direction))
-        }
-
-        fun calculateTurnOrientation(
-            command: String = "R"
-        ) : Direction {
-            return when (command) {
-                "L" -> direction.rotateLeft()
-                "R" -> direction.rotateRight()
-                else -> direction
-            }
         }
 
         fun cordsAhead() : Cords {
@@ -96,20 +73,10 @@ fun main() {
         }
     }
 
-    var initGuardPosition = Cords(0,0)
-    file.forEachIndexed { y, line ->
-        line.forEachIndexed { x, tile ->
-            map[x,y] = if (tile == '.' || tile == '^') 0 else 1
-            if(tile == '^'){
-                initGuardPosition = Cords(x,y)
-            }
-        }
-    }
-
     fun printMap(guard: Guard, map: Matrix2d<Int>){
         val mapClone = map.clone()
         guard.path.forEachIndexed { i, step ->
-            if(mapClone[step.cords] >= 10 || guard.path[min(i+1,guard.path.size-1)].direction != step.direction){
+            if(mapClone[step.cords] >= 10){
                 mapClone[step.cords] = 14
             } else {
                 mapClone[step.cords] = 10 + step.direction.ordinal
@@ -120,81 +87,102 @@ fun main() {
             mapClone[it] = 3
         }
 
-        mapClone[initGuardPosition] = 2
+        mapClone[guard.path.first().cords] = 2
 
         for (y in (0 until mapClone.rows)) {
             for (x in (0 until mapClone.cols)) {
                 // 0=right , 1=down , 2=left , 3=up
                 val printMap = mapOf(
-                    0 to " ",
+                    0 to ".",
                     1 to "#",
                     2 to "x",
                     3 to "o",
                     10 to ">", // >
                     11 to "v", // v
                     12 to "<", // <
-                    13 to "^",  // ^
+                    13 to "^", // ^
                     14 to "+"
                 )
-                print(printMap[mapClone[x, y]] + " ")
+                print(printMap[mapClone[x, y]] + "")
             }
             println()
         }
         println()
     }
 
-    val guard = Guard(initGuardPosition)
-    while(guard.cordsAhead().x in 0 until map.cols && guard.cordsAhead().y in 0 until map.rows){
-        while(map[guard.cordsAhead()] == 1){
-            guard.turn()
+    val map = Matrix2d<Int>(file[0].length, file.size)
+    var initGuardPosition = Cords(0,0)
+    file.forEachIndexed { y, line ->
+        line.forEachIndexed { x, tile ->
+            map[x,y] = if (tile == '#') 1 else 0
+            if(tile == '^'){
+                initGuardPosition = Cords(x,y)
+            }
         }
+    }
+
+    var guard = Guard(initGuardPosition, map)
+    while(guard.canMove()){
         guard.move()
     }
 
-    val sol1 = guard.path.map { it.cords }.distinct().size
+    val sol1 = guard.path.map { it.cords }.distinct().size + 1
     println("Part 1: $sol1")
 
-    val loops = Collections.synchronizedList(mutableListOf<Cords>())
-    runBlocking(Dispatchers.Default) {
-        guard.path.mapIndexed { i, step ->
-            async {
-                val tmpGuard = Guard(step.cords)
-                tmpGuard.set(guard.path.subList(0, i).toMutableList(), step.direction)
-                if (tmpGuard.cordsAhead().x in 0 until map.cols && tmpGuard.cordsAhead().y in 0 until map.rows) {
-                    val possibleLoopCord = tmpGuard.cordsAhead()
-                    if(map[possibleLoopCord] == 1) {
-                        return@async
-                    }
+    val loops = mutableListOf<Cords>()
+    guard = Guard(initGuardPosition, map)
+    while (guard.canMove()) {
+        // Simulate possible loop
+        val possibleLoopCord = guard.cordsAhead()
+        if (map[possibleLoopCord] != 1) {
+            var loop = false;
+            val tmpMap = map.clone()
+            tmpMap[possibleLoopCord] = 1
+            val tmpGuard = Guard(guard.cords, tmpMap, guard.direction)
+            while (tmpGuard.canMove() && !loop) {
+                tmpGuard.move()
+                if (tmpGuard.beenHereBefore()) {
+                    loops.add(possibleLoopCord)
                     tmpGuard.possibleLoopsCords.add(possibleLoopCord)
-                    tmpGuard.turn()
-                    while (tmpGuard.cordsAhead().x in 0 until map.cols && tmpGuard.cordsAhead().y in 0 until map.rows) {
-                        while (map[tmpGuard.cordsAhead()] == 1) {
-                            if(tmpGuard.turn()){
-                                loops.add(possibleLoopCord)
-                                return@async
-                            }
-                        }
-                        if(tmpGuard.move()){
-                            loops.add(possibleLoopCord)
-                            return@async
-                        }
-                    }
+                    //printMap(tmpGuard, tmpMap)
+                    loop = true
                 }
             }
-        }.awaitAll()
+        }
+
+        // Actually move
+        guard.move()
     }
+
     val sol2 = loops.distinct().size
 
     println("Part 2: $sol2")
 
     //printMap(guard,map)
 
-    // original
+    // original (github)
     // 630 - too low
     // 1648 - wrong (possibly higher)
+    // 1650 - wrong (??)
+    // 1661 - wrong (??)
+    // 1769 ?? (haven't submitted yet)
 
-    // test b
+    // test b (twitter)
     // 667 - too low
     // 1580 - too high
     // 1582 - too high
+
+    // test c  (just.jim.trace@gmail.cm
+    // 775 - too low
+    // 1781 - wrong (??)
+    // 1802 - too high
+    // 1843 - too high
+    // 1929 - too high
+
+    // test d (reddit)
+    // 2088 - too high
+
+    // test e (just.jim.d.k@gmail.com)
+    // 1912 - too high
+    // 1913 - too high
 }
